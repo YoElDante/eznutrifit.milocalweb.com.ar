@@ -86,9 +86,9 @@ $cs = $cliente['colors'] ?? [];
                 <li><a href="#productos">Productos</a></li>
                 <li><a href="#ubicacion">Encontranos</a></li>
                 <li><a href="#nosotros">Conocenos en Acción</a></li>
-                <li><a href="<?= $wa_full ?>" target="_blank" rel="noopener noreferrer" class="nav-cta">
-                    <?php include $svg . 'whatsapp.svg'; ?>
+                <li>                <a href="<?= $wa_full ?>" target="_blank" rel="noopener noreferrer" class="nav-cta">
                     Contactanos
+                    <?php include $svg . 'whatsapp.svg'; ?>
                 </a></li>
             </ul>
         </nav>
