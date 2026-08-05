@@ -1666,13 +1666,17 @@ a {
     background: rgba(10, 10, 10, 0.98);
     backdrop-filter: blur(16px);
     border-left: 1px solid rgba(255, 255, 255, 0.06);
+    visibility: hidden;
+    opacity: 0;
     transform: translateX(100%);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s;
     z-index: 105;
     overflow-y: auto;
   }
 
   .navbar.open .navbar-menu {
+    visibility: visible;
+    opacity: 1;
     transform: translateX(0);
   }
 
