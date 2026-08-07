@@ -71,7 +71,12 @@ foreach ($cliente['productos'] as $p) {
 
 // Categorías de productos que el negocio cubre (consulta por WhatsApp)
 $seo_categorias = $cliente['seo_categorias'] ?? [];
+$seo_categorias_imagenes = $cliente['seo_categorias_imagenes'] ?? [];
 foreach ($seo_categorias as $cat) {
+    if (empty($seo_categorias_imagenes[$cat])) {
+        continue;
+    }
+
     $productId = $seo_base_url . '/#product-' . ($offerIndex + 1);
     $offerId   = $seo_base_url . '/#offer-' . ($offerIndex + 1);
     $offerIndex++;
@@ -82,7 +87,7 @@ foreach ($seo_categorias as $cat) {
         'name' => $cat,
         'description' => $cat . ' — Consultá por WhatsApp en ' . $cliente['nombre'] . '. ' . $seo_localidad . ', Córdoba.',
         'category' => 'Suplementos Deportivos',
-        'image' => $og_image_url,
+        'image' => $seo_base_url . $seo_categorias_imagenes[$cat],
         'offers' => ['@id' => $offerId],
     ];
 

@@ -129,6 +129,16 @@ return [
     'seo_lat' => '-32.1692529',
     'seo_long' => '-64.136046',
     'seo_categorias' => ['Proteína', 'Creatina', 'Colágeno', 'Pre-entreno', 'Aminoácidos', 'BCAA', 'Vitaminas', 'Quemadores de grasa', 'Carnitina', 'Glutamina', 'Óxido nítrico', 'Ganadores de peso'],
+    'seo_categorias_imagenes' => [
+        'Proteína'            => '/assets/vid/reels/suplementos-pilares-escenciales.webp',
+        'Creatina'            => '/assets/img/cliente/productos/prod-combo-star.webp',
+        'Colágeno'            => '/assets/img/cliente/productos/prod-colageno.webp',
+        'Aminoácidos'         => '/assets/vid/reels/incluir-aminoacidos-bcaa.webp',
+        'BCAA'                => '/assets/vid/reels/incluir-aminoacidos-bcaa.webp',
+        'Ganadores de peso'   => '/assets/img/cliente/impacto/estrella-mutantmass-creatina.webp',
+        'Quemadores de grasa' => '/assets/img/cliente/impacto/complemento-thermofuelmax.webp',
+        // Faltan fotos para: Pre-entreno, Vitaminas, Carnitina, Glutamina, Óxido nítrico
+    ],
     'seo_marcas' => ['Star Nutrition', 'ENA', 'Gentech', 'Xtrength', 'Nutrilab', 'HTN', 'Mervick', 'Ultra Tech'],
 
     // ─── Quiénes Somos ───────────────────────────────────────────────
