@@ -2,7 +2,7 @@
 /**
  * Sección de Ubicación — "Donde nos podés encontrar".
  *
- * Muestra dos puntos de venta con mapa embebido de Google Maps,
+ * Muestra los puntos de venta con imagen estática de Google Maps,
  * dirección, logo del negocio anfitrión y botón "Llevame allí".
  *
  * @package MiLocalWeb\Clientes
@@ -29,6 +29,37 @@ function ubicacion_logo_dims($logoUrl) {
     }
     return '';
 }
+
+// Extrae lat/lng de la ubicación, con fallback al link de Google Maps.
+function ubicacion_coords($ubi) {
+    if (!empty($ubi['lat']) && !empty($ubi['lng'])) {
+        return [$ubi['lat'], $ubi['lng']];
+    }
+    if (!empty($ubi['gmaps_link']) && preg_match('/[?&]q=(-?\d+\.\d+),(-?\d+\.\d+)/', $ubi['gmaps_link'], $matches)) {
+        return [$matches[1], $matches[2]];
+    }
+    return [null, null];
+}
+
+// Construye la URL de Google Static Maps para una ubicación.
+function ubicacion_static_map_url($lat, $lng, $ancho = 640, $alto = 350, $zoom = 16) {
+    $apiKey = defined('GOOGLE_MAPS_API_KEY') ? GOOGLE_MAPS_API_KEY : '';
+    $placeholder = 'TU_GOOGLE_MAPS_API_KEY_AQUI';
+    if ($apiKey === '' || $apiKey === $placeholder) {
+        return '';
+    }
+    $size = (int) $ancho . 'x' . (int) $alto;
+    return sprintf(
+        'https://maps.googleapis.com/maps/api/staticmap?center=%s,%s&zoom=%d&size=%s&markers=color:red%%7C%s,%s&key=%s',
+        $lat,
+        $lng,
+        (int) $zoom,
+        $size,
+        $lat,
+        $lng,
+        urlencode($apiKey)
+    );
+}
 ?>
 <section id="ubicacion" class="section section-ubicacion" aria-label="Ubicación">
     <div class="section-container">
@@ -42,7 +73,7 @@ function ubicacion_logo_dims($logoUrl) {
                 <div class="ubicacion-info">
                     <div class="ubicacion-header">
                         <?php if (!empty($ubi['logo'])): ?>
-                        <img src="<?= htmlspecialchars($ubi['logo']) ?>" alt="<?= htmlspecialchars($ubi['nombre']) ?>" class="ubicacion-logo"<?= ubicacion_logo_dims($ubi['logo']) ?> loading="lazy">
+                        <img src="<?= htmlspecialchars($ubi['logo']) ?>" alt="<?= htmlspecialchars($ubi['nombre']) ?>" class="ubicacion-logo"<?= ubicacion_logo_dims($ubi['logo']) ?> loading="lazy" decoding="async">
                         <?php endif; ?>
                         <?php if (!empty($ubi['nombre'])): ?>
                         <h3 class="ubicacion-punto"><?= htmlspecialchars($ubi['nombre']) ?></h3>
@@ -72,15 +103,41 @@ function ubicacion_logo_dims($logoUrl) {
                 <!-- Mapa a la derecha -->
                 <div class="ubicacion-mapa">
                     <?php
-                        $iframeTitle = !empty($ubi['nombre'])
-                            ? 'Mapa de ubicación de ' . htmlspecialchars($ubi['nombre'])
+                        list($lat, $lng) = ubicacion_coords($ubi);
+                        $staticMapUrl = ($lat && $lng) ? ubicacion_static_map_url($lat, $lng) : '';
+                        $mapAlt = !empty($ubi['nombre'])
+                            ? 'Mapa de ubicación de ' . htmlspecialchars($ubi['nombre']) . ' en Río Tercero, Córdoba'
                             : 'Mapa de ubicación';
-                        $embed = $ubi['gmaps_embed'] ?? '';
-                        if ($embed !== '' && preg_match('/<iframe\b/i', $embed) && !preg_match('/<iframe\b[^>]*\btitle=/i', $embed)) {
-                            $embed = preg_replace('/<iframe/i', '<iframe title="' . $iframeTitle . '"', $embed, 1);
-                        }
-                        echo $embed;
+
+                        if ($staticMapUrl !== '' && !empty($ubi['gmaps_link'])):
                     ?>
+                        <a href="<?= htmlspecialchars($ubi['gmaps_link']) ?>"
+                           target="_blank" rel="noopener noreferrer"
+                           class="ubicacion-mapa-link"
+                           aria-label="Ver <?= htmlspecialchars($ubi['nombre']) ?> en Google Maps">
+                            <img src="<?= htmlspecialchars($staticMapUrl) ?>"
+                                 alt="<?= $mapAlt ?>"
+                                 class="ubicacion-mapa-img"
+                                 width="640" height="350"
+                                 loading="lazy">
+                            <?php if (!empty($ubi['nombre'])): ?>
+                            <span class="ubicacion-mapa-label"><?= htmlspecialchars($ubi['nombre']) ?></span>
+                            <?php endif; ?>
+                        </a>
+                    <?php elseif (!empty($ubi['gmaps_embed'])): ?>
+                        <div class="ubicacion-mapa-fallback">
+                            <?php
+                                $iframeTitle = !empty($ubi['nombre'])
+                                    ? 'Mapa de ubicación de ' . htmlspecialchars($ubi['nombre'])
+                                    : 'Mapa de ubicación';
+                                $embed = $ubi['gmaps_embed'];
+                                if (preg_match('/<iframe\b/i', $embed) && !preg_match('/<iframe\b[^>]*\btitle=/i', $embed)) {
+                                    $embed = preg_replace('/<iframe/i', '<iframe title="' . $iframeTitle . '"', $embed, 1);
+                                }
+                                echo $embed;
+                            ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

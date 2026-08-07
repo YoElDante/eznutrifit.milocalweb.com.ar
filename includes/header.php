@@ -268,8 +268,9 @@ $ld_json['@graph'] = array_merge($ld_json['@graph'], $ld_products, $ld_offers);
     <?= json_encode($ld_json, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?>
     </script>
 
-    <!-- Fuentes auto-hosteadas (render-blocking intencional, archivo local pequeño) -->
-    <link rel="stylesheet" href="<?= $assets ?>/fonts/fonts.css?v=<?= filemtime(__DIR__ . '/../assets/fonts/fonts.css') ?>">
+    <!-- Fuentes auto-hosteadas cargadas de forma no bloqueante -->
+    <link rel="preload" href="<?= $assets ?>/fonts/fonts.css?v=<?= filemtime(__DIR__ . '/../assets/fonts/fonts.css') ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="<?= $assets ?>/fonts/fonts.css?v=<?= filemtime(__DIR__ . '/../assets/fonts/fonts.css') ?>"></noscript>
 
     <!-- Critical CSS inline: navbar + hero + variables base (above-the-fold) -->
     <style>
@@ -308,6 +309,7 @@ $ld_json['@graph'] = array_merge($ld_json['@graph'], $ld_products, $ld_offers);
                          alt="Logo <?= htmlspecialchars($cliente['nombre']) ?> — Suplementos deportivos en <?= $seo_localidad ?>"
                          class="brand-logo"
                          loading="eager"
+                         decoding="async"
                          width="300" height="300">
                     <span class="brand-name"><?= htmlspecialchars($cliente['nombre']) ?></span>
                 </a>

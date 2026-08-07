@@ -24,6 +24,7 @@ $mlw_wa_full   = 'https://wa.me/' . $mlw_wa_number . '?text=' . $mlw_wa_msg;
                  alt="MiLocalWeb.com.ar — Páginas web para negocios locales"
                  class="aside-logo-img"
                  loading="lazy"
+                 decoding="async"
                  width="691" height="300">
         </a>
 

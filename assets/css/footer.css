@@ -152,9 +152,9 @@
 }
 
 .footer-badge-cta a {
-  color: var(--color-muted);
+  color: #B3B3B3;
   font-weight: 500;
-  border-bottom: 1px dashed rgba(160, 160, 160, 0.25);
+  border-bottom: 1px dashed rgba(179, 179, 179, 0.35);
   transition: color 0.2s, border-color 0.2s;
 }
 

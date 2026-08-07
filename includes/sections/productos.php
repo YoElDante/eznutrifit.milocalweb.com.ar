@@ -34,6 +34,7 @@ if (empty($productos)) {
                          alt="<?= htmlspecialchars($p['nombre'] ?? 'Producto ' . ($i + 1)) ?> — EZ Nutrifit Río Tercero"
                          class="producto-img"
                          loading="lazy"
+                         decoding="async"
                          width="600" height="600">
                 </div>
                 <div class="producto-body">

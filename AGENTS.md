@@ -188,26 +188,52 @@ La landing está optimizada para búsquedas locales en Google. Elementos clave:
 ### Entrega de CSS (Performance 95+)
 
 Para evitar render-blocking y minimizar requests HTTP, se usa la técnica
-**Critical CSS inline + bundle asíncrono en build time**:
+**Critical CSS inline + bundle asíncrono en build time**.
 
-1. **Archivos fuente modulares** en `assets/css/*.css` (base, navbar, hero, sections, etc.).
-2. **`assets/css/critical.css`** con el CSS imprescindible para pintar el
-   above-the-fold (variables, reset, navbar y hero). Se inyecta inline en
-   `includes/header.php` dentro de `<style>`.
-3. **`tools/build-css.php`** combina todos los archivos fuente en un único
-   `assets/css/styles.css` en build/deploy time (no runtime).
-4. **`assets/css/styles.css`** se carga de forma **asíncrona** con:
-   ```html
-   <link rel="preload" href="assets/css/styles.css?v=..." as="style" onload="this.onload=null;this.rel='stylesheet'">
-   <noscript><link rel="stylesheet" href="assets/css/styles.css?v=..."></noscript>
-   ```
-5. Después de modificar cualquier `.css`, correr:
-   ```bash
-   php tools/build-css.php
-   ```
+> **Regla de oro:** el CSS se escribe SIEMPRE en los archivos fuente. `assets/css/styles.css`
+> es un **artefacto generado** por el build y **JAMÁS se edita a mano**: cualquier edición
+> directa se pierde la próxima vez que se corra el script.
+
+#### Dónde va cada tipo de estilo
+
+1. **Estilos modulares por componente** → `assets/css/*.css`
+   (base, navbar, hero, sections, aside, clientes, footer, responsive).
+   Son la fuente para las secciones de la página.
+2. **Estilos above-the-fold (críticos)** → `assets/css/critical.css`
+   (variables `:root`, reset, navbar y hero con sus breakpoints).
+   Se inyecta inline en `includes/header.php` dentro de un `<style>`, así que
+   **cualquier cambio se refleja en el próximo request sin rebuild**.
+3. **Fuentes locales** → `assets/fonts/fonts.css` (auto-hosteadas, carga async).
+
+#### Regenerar el bundle (build)
+
+- `tools/build-css.php` combina **solo** los archivos modulares de `assets/css/*.css`
+  (NO incluye `critical.css` ni `fonts.css`) en un único `assets/css/styles.css`,
+  con minificación conservadora. Se corre en build/deploy time, nunca en runtime.
+- **Después de modificar CUALQUIER archivo modular de `assets/css/`**, es obligatorio correr:
+
+  ```bash
+  php tools/build-css.php
+  ```
+
+- `assets/css/styles.css` se sirve de forma **asíncrona**:
+  ```html
+  <link rel="preload" href="assets/css/styles.css?v=..." as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/styles.css?v=..."></noscript>
+  ```
+- El **cache-busting** (`?v=`) se calcula con `filemtime()` del bundle, así que
+  regenerar el archivo invalida la caché automáticamente.
+
+#### Verificación post-cambio
+
+- Tras cualquier cambio de CSS, confirmar que `assets/css/styles.css` quedó más
+  reciente que el archivo fuente editado (o simplemente correr el build siempre).
+- Revisar en el navegador con hard refresh (`Ctrl+Shift+R` / `Cmd+Shift+R`).
+- Si se tocó `critical.css` o `fonts.css` NO hace falta rebuild, pero sí hard refresh.
 
 **Reglas:**
 - ❌ No generar el bundle en runtime (evita ejecutar PHP por cada request de CSS).
+- ❌ No editar `assets/css/styles.css` a mano — es artefacto de build, se sobrescribe.
 - ✅ Los archivos fuente modulares se mantienen; el bundle es un artefacto de build.
 - ✅ Fuentes auto-hosteadas en `assets/fonts/` para eliminar requests a terceros.
 

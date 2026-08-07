@@ -13,7 +13,9 @@
 |---|---|---|---|
 | **Performance** | LCP 3.8 s — fondo del hero descubierto tarde | Preload de la imagen del hero con `fetchpriority="high"` | `includes/header.php`, `includes/sections/hero.php` |
 | **Performance** | Google Fonts bloquea render (~1038 ms) | Fuentes descargadas y servidas localmente desde `assets/fonts/` | `assets/fonts/*`, `includes/header.php` |
-| **Performance** | 8 archivos CSS render-blocking | Critical CSS inline (`assets/css/critical.css`) + bundle estático async generado en build time (`tools/build-css.php` → `assets/css/styles.css`) | `assets/css/critical.css`, `assets/css/styles.css`, `tools/build-css.php`, `includes/header.php`, `index.php` |
+| **Performance** | 8 archivos CSS render-blocking | Critical CSS inline (`assets/css/critical.css`) + bundle estático async generado en build time (`tools/build-css.php` → `assets/css/styles.css`); `fonts.css` también carga async | `assets/css/critical.css`, `assets/css/styles.css`, `tools/build-css.php`, `includes/header.php`, `index.php` |
+| **Performance** | Trabajo de decodificación de imágenes en hilo principal | Atributo `decoding="async"` en imágenes no críticas; `decoding="auto"` en LCP | Varios `includes/sections/*.php`, `includes/header.php`, `includes/footer.php` |
+| **Accessibility** | Contraste insuficiente en 6 elementos (incl. link "Pedí la tuya sin cargo") | Ajustes de opacidad y color; link del footer badge pasó a `#B3B3B3` | `assets/css/base.css`, `assets/css/aside.css`, `assets/css/footer.css`, `config.php` |
 | **Performance** | Imágenes sin `width`/`height` → CLS | Atributos de dimensión agregados a todas las imágenes relevantes | Varios `includes/sections/*.php`, `includes/header.php`, `includes/footer.php` |
 | **Performance** | JS propio contribuye al TBT | Scripts del footer cargan con `defer` | `includes/footer.php` |
 | **Accessibility** | Contraste insuficiente en 6 elementos | Ajuste de opacidades y cambio de `--color-accent` a `#FF5555` | `assets/css/base.css`, `assets/css/aside.css`, `assets/css/footer.css`, `config.php` |
@@ -160,13 +162,79 @@ Se agregó en `.htaccess` caché inmutable de 1 año para archivos de fuentes:
 
 ---
 
-## 5. Próximos pasos sugeridos
+## 5. Ajustes posteriores al re-análisis v2
 
-1. **Volver a correr Lighthouse** para medir el impacto real de los cambios.
-2. **Optimizar entrega de imágenes**: el informe original estimaba un ahorro de 152 KiB sirviendo imágenes al tamaño real de despliegue y usando `srcset`/`sizes`.
-3. **Revisar el panel Issues de DevTools** para confirmar que la CSP ya no genera advertencias y que no hay orígenes externos no cubiertos.
-4. **Recuerdo para mantenimiento**: cada vez que se modifique un `.css`, correr `php tools/build-css.php` para regenerar `assets/css/styles.css`.
-5. Considerar agregar `loading="lazy"` a las imágenes del hero solo cuando no sean LCP (actualmente `loading="eager"` es correcto para el hero visible).
+Tras el segundo informe (`lighthouse-resumen-eznutrifit-navegacion-movil-v2.md`),
+que mostró **Performance 66 → 83** y **Accessibility 91 → 96**, se aplicaron
+estos ajustes adicionales:
+
+### 5.1 Contraste del link "Pedí la tuya sin cargo"
+
+Último elemento de accesibilidad pendiente en v2. En `assets/css/footer.css` se
+cambió `.footer-badge-cta a` a `color: #B3B3B3` para pasar el contraste WCAG AA.
+
+### 5.2 `fonts.css` cargado de forma no bloqueante
+
+En `includes/header.php` el link a `fonts.css` pasó del modo sincrónico al truco
+async:
+
+```html
+<link rel="preload" href="assets/fonts/fonts.css?v=..." as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="assets/fonts/fonts.css?v=..."></noscript>
+```
+
+### 5.3 Descodificación de imágenes async
+
+Se agregó `decoding="async"` a imágenes no críticas (logos, productos, galería,
+aside, footer, ubicaciones) para reducir trabajo en el hilo principal. Las
+imágenes LCP (hero) quedaron con `decoding="auto"`.
+
+### 5.4 Optimización de imágenes pendiente de herramientas externas
+
+El ahorro restante de ~81 KiB en 3 imágenes (`hero-split-bg`, `estrella-img`,
+`secundaria-img`) requiere compresión/re-escalado con herramientas como `cwebp`,
+Squoosh o TinyPNG, que no están disponibles en este entorno de trabajo.
+
+---
+
+## 6. Próximos pasos sugeridos
+
+1. **Volver a correr Lighthouse** para medir el impacto de los últimos ajustes.
+2. **Investigar el trabajo del hilo principal** con DevTools Performance
+   (ver instrucciones en el skill o en la sección 7 de este documento).
+3. **Optimizar las imágenes restantes** (~81 KiB) con una herramienta externa.
+4. **Revisar el panel Issues de DevTools** para confirmar el detalle exacto del
+   issue de CSP.
+5. **Recuerdo para mantenimiento**: cada vez que se modifique un `.css`, correr
+   `php tools/build-css.php` para regenerar `assets/css/styles.css`.
+
+---
+
+## 7. Guía para capturar traza de DevTools Performance
+
+El principal freno restante del score de Performance es el trabajo en el hilo
+principal (5.7 s reportados, TBT 430 ms). Nuestros scripts son pequeños y van
+con `defer`, así que hace falta una traza real para ver qué está consumiendo
+CPU.
+
+### Pasos para capturar la traza
+
+1. **Abrir Chrome en una ventana de incógnito** (Ctrl+Shift+N) para evitar
+   extensiones.
+2. **Abrir DevTools** con `F12` → pestaña **Performance**.
+3. En la parte superior izquierda, hacer clic en el ícono de **recargar y
+   capturar** (circular, justo al lado del botón de grabación gris).
+4. Esperar a que termine la recarga y la traza se detenga sola.
+5. **Guardar la traza** con el botón derecho → **Save profile...** (archivo `.json`).
+6. Subir el archivo al chat o indicar lo siguiente:
+   - ¿Qué tareas largas (>50 ms) aparecen en la sección **Main**?
+   - ¿Hay bloques amarillos de **Parse HTML**, **Parse Stylesheet**, **Evaluate Script** o **Layout**?
+   - ¿Cuánto tiempo ocupa cada uno de nuestros scripts (`back-to-top.js`,
+     `navbar.js`, `smooth-scroll.js`, `reels.js`)?
+   - ¿Aparece algún script que no reconozcas (por ejemplo, de extensiones)?
+
+Con esa información podemos decidir si el problema está en nuestro código, en
+el parseo del HTML/CSS, o en factores externos.
 
 ---
 

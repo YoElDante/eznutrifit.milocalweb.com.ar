@@ -23,6 +23,7 @@ $logo_src  = $cliente['logo_img'] ?? $img . 'logo.png';
                      alt="<?= htmlspecialchars($cliente['nombre']) ?> — Suplementos deportivos en Río Tercero"
                      class="footer-logo"
                      loading="lazy"
+                     decoding="async"
                      width="300" height="300">
                 <p class="footer-slogan"><?= htmlspecialchars($cliente['slogan']) ?></p>
             </div>
@@ -77,6 +78,7 @@ $logo_src  = $cliente['logo_img'] ?? $img . 'logo.png';
                        alt="MiLocalWeb.com.ar — Páginas web para negocios locales"
                        class="mlw-logo-img"
                        loading="lazy"
+                       decoding="async"
                        width="691" height="300">
             </a>
             <div class="footer-badge-text">

@@ -23,6 +23,7 @@ $wa_full   = $wa_link . '?text=' . $wa_msg;
                      alt="Combo Explosivo EZ Nutrifit — Mutantmass + Creatina"
                      class="estrella-img"
                      loading="lazy"
+                     decoding="async"
                      width="600" height="600">
             </div>
 
@@ -80,6 +81,7 @@ $wa_full   = $wa_link . '?text=' . $wa_msg;
                           alt="Thermo Fuel Max — Quemador de grasa"
                           class="secundaria-img"
                           loading="lazy"
+                          decoding="async"
                           width="600" height="600">
                     <div class="secundaria-overlay">
                         <h4>Thermo Fuel Max</h4>
@@ -95,6 +97,7 @@ $wa_full   = $wa_link . '?text=' . $wa_msg;
                           alt="Creatina + Beta Alanina — Sinergia"
                           class="secundaria-img"
                           loading="lazy"
+                          decoding="async"
                           width="600" height="600">
                     <div class="secundaria-overlay">
                         <h4>Creatina + Beta Alanina</h4>
@@ -110,6 +113,7 @@ $wa_full   = $wa_link . '?text=' . $wa_msg;
                           alt="Beta Alanina — 300gr"
                           class="secundaria-img"
                           loading="lazy"
+                          decoding="async"
                           width="600" height="600">
                     <div class="secundaria-overlay">
                         <h4>Beta Alanina</h4>

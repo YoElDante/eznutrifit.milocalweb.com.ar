@@ -12,6 +12,7 @@
 
 require_once __DIR__ . '/config.php';
 $cliente = require __DIR__ . '/config.php';
+require_once __DIR__ . '/includes/secrets.php';
 
 // ─── Rutas a assets ──────────────────────────────────────────────
 $esLocal = (php_sapi_name() === 'cli-server')

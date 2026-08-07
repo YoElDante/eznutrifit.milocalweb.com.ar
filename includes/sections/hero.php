@@ -31,6 +31,7 @@ $wa_full     = $wa_link . '?text=' . $wa_msg;
                 <img src="<?= $logo_src ?>"
                      alt="Logo <?= htmlspecialchars($cliente['nombre']) ?> — Suplementos deportivos en Río Tercero"
                      class="hero-logo"
+                     decoding="async"
                      width="300" height="300">
                 <h1 class="hero-title"><?= htmlspecialchars(($cliente['seo_keywords_primarias'] ?? 'Suplementos Deportivos') . ' en ' . ($cliente['seo_localidad'] ?? 'Río Tercero')) ?></h1>
                 <?php if (!empty($cliente['hero_descripcion'])): ?>
@@ -63,12 +64,14 @@ $wa_full     = $wa_link . '?text=' . $wa_msg;
                      class="hero-image"
                      loading="eager"
                      fetchpriority="high"
+                     decoding="auto"
                      width="575" height="800">
             </div>
             <div class="hero-content hero-content--centered">
                 <img src="<?= $logo_src ?>"
                      alt="Logo <?= htmlspecialchars($cliente['nombre']) ?> — Suplementos deportivos en Río Tercero"
                      class="hero-logo"
+                     decoding="async"
                      width="300" height="300">
                 <h1 class="hero-title"><?= htmlspecialchars(($cliente['seo_keywords_primarias'] ?? 'Suplementos Deportivos') . ' en ' . ($cliente['seo_localidad'] ?? 'Río Tercero')) ?></h1>
                 <?php if (!empty($cliente['hero_descripcion'])): ?>
@@ -93,6 +96,7 @@ $wa_full     = $wa_link . '?text=' . $wa_msg;
                 <img src="<?= $logo_src ?>"
                      alt="Logo <?= htmlspecialchars($cliente['nombre']) ?> — Suplementos deportivos en Río Tercero"
                      class="hero-logo"
+                     decoding="async"
                      width="300" height="300">
                 <h1 class="hero-title"><?= htmlspecialchars(($cliente['seo_keywords_primarias'] ?? 'Suplementos Deportivos') . ' en ' . ($cliente['seo_localidad'] ?? 'Río Tercero')) ?></h1>
                 <?php if (!empty($cliente['hero_descripcion'])): ?>
@@ -113,6 +117,7 @@ $wa_full     = $wa_link . '?text=' . $wa_msg;
                      class="hero-image"
                      loading="eager"
                      fetchpriority="high"
+                     decoding="auto"
                      width="575" height="800">
             </div>
         </div>

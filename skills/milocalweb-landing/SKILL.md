@@ -102,34 +102,60 @@ When `docs/guia-relevamiento.md` is complete:
 
 ## CSS Delivery Optimization (Performance 95+)
 
-Every landing page MUST use Critical CSS inline + async bundle:
+Every landing page MUST use Critical CSS inline + async bundle.
 
-1. **Source files** stay modular in `assets/css/*.css`.
-2. **`assets/css/critical.css`** contains only above-the-fold styles:
-   - `:root` CSS variables
-   - Base reset (`html`, `body`, `img`, `a`)
-   - Navbar (including mobile hamburger)
-   - Hero (all layouts + critical responsive breakpoints)
-3. **`tools/build-css.php`** combines all modular source files into a single
-   `assets/css/styles.css` at build/deploy time. It performs conservative
-   minification (removes comments and redundant whitespace).
-4. **`includes/header.php`** must:
-   - Load local fonts from `assets/fonts/fonts.css` synchronously (small, local).
-   - Inline `assets/css/critical.css` inside a `<style>` tag.
-   - Load `assets/css/styles.css` asynchronously:
-     ```html
-     <link rel="preload" href="assets/css/styles.css?v=..." as="style" onload="this.onload=null;this.rel='stylesheet'">
-     <noscript><link rel="stylesheet" href="assets/css/styles.css?v=..."></noscript>
-     ```
-5. **After any CSS change**, run:
-   ```bash
-   php tools/build-css.php
-   ```
-6. **Self-host fonts** in `assets/fonts/` instead of Google Fonts to avoid
-   third-party requests and simplify CSP.
+> **Golden rule:** CSS is ALWAYS written in source files. `assets/css/styles.css`
+> is a **generated artifact** from the build and is **NEVER edited by hand** —
+> any direct edit is lost the next time the script runs.
+
+### Where each style goes
+
+1. **Modular component styles** → `assets/css/*.css`
+   (`base.css`, `navbar.css`, `hero.css`, `sections.css`, `aside.css`,
+   `clientes.css`, `footer.css`, `responsive.css`). Source of truth for page sections.
+2. **Above-the-fold critical styles** → `assets/css/critical.css`
+   (`:root` variables, base reset, navbar incl. mobile hamburger, hero all layouts
+   + critical breakpoints). Injected inline in `includes/header.php` inside a
+   `<style>` tag, so changes appear on the next request — NO rebuild needed.
+3. **Local fonts** → `assets/fonts/fonts.css` (self-hosted, async load).
+
+### Regenerating the bundle (build)
+
+- `tools/build-css.php` combines ONLY the modular files in `assets/css/*.css`
+  (it does NOT include `critical.css` or `fonts.css`) into a single
+  `assets/css/styles.css`, with conservative minification. Runs at build/deploy
+  time, never at runtime.
+- **After modifying ANY modular file in `assets/css/`**, you MUST run:
+  ```bash
+  php tools/build-css.php
+  ```
+- `assets/css/styles.css` is served asynchronously:
+  ```html
+  <link rel="preload" href="assets/css/styles.css?v=..." as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/styles.css?v=..."></noscript>
+  ```
+- The cache-buster (`?v=`) is computed with `filemtime()` of the bundle, so
+  regenerating the file invalidates the cache automatically.
+
+### Post-change verification
+
+- After any CSS change, confirm `assets/css/styles.css` is newer than the edited
+  source file (or just always run the build).
+- Review in the browser with a hard refresh (`Ctrl+Shift+R` / `Cmd+Shift+R`).
+- If you only touched `critical.css` or `fonts.css`, no rebuild is needed, but a
+  hard refresh still is.
+
+### Fonts & images
+
+- **Self-host fonts** in `assets/fonts/` instead of Google Fonts to avoid
+  third-party requests and simplify CSP. Load async with `font-display: swap`.
+- **Images**: add `width` and `height` to every `<img>`, use `loading="lazy"`
+  for non-critical images, and add `decoding="async"` to offload image decode
+  from the main thread. Keep `decoding="auto"` for LCP images.
 
 **Anti-patterns to avoid:**
 - ❌ Do NOT generate CSS bundles at runtime (no `bundle.php`).
+- ❌ Do NOT edit `assets/css/styles.css` by hand — it is a build artifact.
 - ❌ Do NOT load multiple render-blocking CSS files.
 - ❌ Do NOT load Google Fonts synchronously from `fonts.googleapis.com`.
 
@@ -147,7 +173,8 @@ Before considering a landing page complete, verify:
 - [ ] WhatsApp float functional
 - [ ] Meta tags correct (title, description, OG)
 - [ ] `.htaccess` with HTTPS forced, cache and CSP
-- [ ] CSS build ran: `php tools/build-css.php` and `assets/css/styles.css` exists
+- [ ] Every CSS edit happened in a source file (`assets/css/*.css`, `critical.css` or `fonts.css`) — never in `styles.css`
+- [ ] `php tools/build-css.php` ran after any modular `assets/css/*.css` change, and `assets/css/styles.css` is newer than its sources
 - [ ] `assets/css/critical.css` inline in `<head>` and `styles.css` loaded async
 - [ ] Responsive on mobile
 - [ ] No PHP errors (display_errors off in production)
