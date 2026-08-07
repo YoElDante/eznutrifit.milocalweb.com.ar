@@ -37,20 +37,20 @@ $og_image_alt    = htmlspecialchars($cliente['nombre']) . ' — ' . htmlspecialc
 $canonical_url   = $seo_base_url;
 
 // ─── JSON-LD Structured Data ────────────────────────────────
-$ld_products = [];
+$ld_offers = [];
 foreach ($cliente['productos'] as $p) {
-    $ld_products[] = [
-        '@type' => 'Product',
-        'name' => $p['nombre'],
-        'description' => $p['descripcion'],
-        'category' => 'Suplementos Deportivos',
-        'image' => $seo_base_url . '/assets/img/' . $p['imagen'],
-        'offers' => [
-            '@type' => 'Offer',
-            'price' => '0',
-            'priceCurrency' => 'ARS',
-            'availability' => 'https://schema.org/InStock',
-            'url' => 'https://wa.me/' . $wa_number . '?text=' . urlencode('Hola! Vi ' . $p['nombre'] . ' en tu web y quisiera más información'),
+    $ld_offers[] = [
+        '@type' => 'Offer',
+        'price' => '0',
+        'priceCurrency' => 'ARS',
+        'availability' => 'https://schema.org/InStock',
+        'url' => 'https://wa.me/' . $wa_number . '?text=' . urlencode('Hola! Vi ' . $p['nombre'] . ' en tu web y quisiera más información'),
+        'itemOffered' => [
+            '@type' => 'Product',
+            'name' => $p['nombre'],
+            'description' => $p['descripcion'],
+            'category' => 'Suplementos Deportivos',
+            'image' => $seo_base_url . '/assets/img/' . $p['imagen'],
         ],
     ];
 }
@@ -58,16 +58,16 @@ foreach ($cliente['productos'] as $p) {
 // Categorías de productos que el negocio cubre (para SEO en LLMs)
 $seo_categorias = $cliente['seo_categorias'] ?? [];
 foreach ($seo_categorias as $cat) {
-    $ld_products[] = [
-        '@type' => 'Product',
-        'name' => $cat,
-        'category' => 'Suplementos Deportivos',
-        'offers' => [
-            '@type' => 'Offer',
-            'price' => '0',
-            'priceCurrency' => 'ARS',
-            'availability' => 'https://schema.org/InStock',
-            'url' => 'https://wa.me/' . $wa_number . '?text=' . urlencode('Hola! Quiero info sobre ' . $cat),
+    $ld_offers[] = [
+        '@type' => 'Offer',
+        'price' => '0',
+        'priceCurrency' => 'ARS',
+        'availability' => 'https://schema.org/InStock',
+        'url' => 'https://wa.me/' . $wa_number . '?text=' . urlencode('Hola! Quiero info sobre ' . $cat),
+        'itemOffered' => [
+            '@type' => 'Product',
+            'name' => $cat,
+            'category' => 'Suplementos Deportivos',
         ],
     ];
 }
@@ -113,18 +113,11 @@ $ld_json = [
             ],
             'hasMap' => $cliente['ubicaciones'][0]['gmaps_link'] ?? '',
             'sameAs' => $ld_sameas,
-            'makesOffer' => $ld_products,
+            'makesOffer' => $ld_offers,
             'founder' => [
                 '@type' => 'Person',
                 'name' => 'Emiliano Zebalos',
                 'jobTitle' => 'Dueño',
-            ],
-            'author' => [
-                '@type' => 'Organization',
-                'name' => 'MiLocalWeb',
-                'url' => 'https://milocalweb.com.ar',
-                'telephone' => '+5493513783473',
-                'description' => 'Páginas web para negocios locales — Diseño, SEO y presencia digital',
             ],
         ],
         [
