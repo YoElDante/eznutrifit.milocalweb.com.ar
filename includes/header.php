@@ -138,6 +138,21 @@ $ld_json = [
                 ],
             ],
         ],
+        [
+            '@type' => 'WebSite',
+            '@id' => $seo_base_url . '/#website',
+            'url' => $seo_base_url . '/',
+            'name' => htmlspecialchars($cliente['nombre']) . ' — ' . $seo_keywords . ' en ' . $seo_localidad,
+            'description' => $seo_description,
+            'inLanguage' => 'es',
+            'author' => [
+                '@type' => 'Organization',
+                'name' => 'MiLocalWeb',
+                'url' => 'https://milocalweb.com.ar',
+                'telephone' => '+5493513783473',
+                'description' => 'Páginas web para negocios locales — Diseño, SEO y presencia digital',
+            ],
+        ],
     ],
 ];
 
