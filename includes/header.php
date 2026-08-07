@@ -47,9 +47,9 @@ foreach ($cliente['productos'] as $p) {
         'image' => $seo_base_url . '/assets/img/' . $p['imagen'],
         'offers' => [
             '@type' => 'Offer',
-            'availability' => 'https://schema.org/InStock',
+            'price' => '0',
             'priceCurrency' => 'ARS',
-            'businessFunction' => 'https://purl.org/goodrelations/v1#Sell',
+            'availability' => 'https://schema.org/InStock',
             'url' => 'https://wa.me/' . $wa_number . '?text=' . urlencode('Hola! Vi ' . $p['nombre'] . ' en tu web y quisiera más información'),
         ],
     ];
@@ -64,9 +64,9 @@ foreach ($seo_categorias as $cat) {
         'category' => 'Suplementos Deportivos',
         'offers' => [
             '@type' => 'Offer',
-            'availability' => 'https://schema.org/InStock',
+            'price' => '0',
             'priceCurrency' => 'ARS',
-            'businessFunction' => 'https://purl.org/goodrelations/v1#Sell',
+            'availability' => 'https://schema.org/InStock',
             'url' => 'https://wa.me/' . $wa_number . '?text=' . urlencode('Hola! Quiero info sobre ' . $cat),
         ],
     ];
