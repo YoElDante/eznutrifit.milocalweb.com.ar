@@ -90,6 +90,10 @@ La landing está optimizada para búsquedas locales en Google. Elementos clave:
 - La URL de la landing debe estar registrada en el perfil de Google Business del cliente
 - La sección de Ubicación debe incluir el iframe embed de Google Maps
 - Las estrellas y reseñas (si existen) deben mostrarse para reforzar prueba social
+- **Zoom estandarizado de mapas:** Todos los iframes de Google Maps deben tener
+  radio de zoom `!1d1500` para mostrar entrecalles y avenidas de forma consistente.
+  Si el embed viene con otro valor (ej. `!1d422`, `!1d13508`), reemplazar por `!1d1500`
+  preservando los valores de `!2d` (longitud) y `!3d` (latitud).
 
 ---
 
