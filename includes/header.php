@@ -24,14 +24,14 @@ $seo_lat        = $cliente['seo_lat'] ?? '-32.1692529';
 $seo_long       = $cliente['seo_long'] ?? '-64.136046';
 $seo_domain     = $_SERVER['HTTP_HOST'] ?? 'eznutrifit.milocalweb.com.ar';
 $seo_base_url   = 'https://' . $seo_domain;
-$seo_og_image_path = $cliente['seo_og_image'] ?? '/assets/img/cliente/logos/logo-300x300-transp.webp';
+$seo_og_image_path = $cliente['seo_og_image'] ?? '/assets/img/cliente/logos/og-image-1200x630.webp';
 
 $productos_nombres = array_map(function ($p) { return mb_strtolower($p['nombre']); }, $cliente['productos']);
-$seo_title       = htmlspecialchars($cliente['nombre']) . ' — ' . $seo_keywords . ' y Nutrición en ' . $seo_localidad . ', ' . htmlspecialchars($seo_provincia);
-$seo_description = htmlspecialchars($cliente['nombre']) . ': ' . implode(', ', array_slice($productos_nombres, 0, 3)) . ' en ' . $seo_localidad . '. Suplementación deportiva de alto rendimiento. Pedí info por WhatsApp. Envíos a todo Córdoba.';
+$seo_title       = htmlspecialchars($cliente['nombre']) . ' — ' . $seo_keywords . ' en ' . $seo_localidad;
+$seo_description = htmlspecialchars($cliente['nombre']) . ': ' . implode(', ', array_slice($productos_nombres, 0, 3)) . ' en ' . $seo_localidad . '. Suplementos deportivos. Pedí info por WhatsApp.';
 $seo_placename   = $seo_localidad . ', ' . htmlspecialchars($seo_provincia) . ', Argentina';
 $og_title_meta   = htmlspecialchars($cliente['nombre']) . ' — ' . $seo_keywords . ' en ' . $seo_localidad;
-$og_description  = htmlspecialchars($cliente['hero_descripcion'] ?? '');
+$og_description  = htmlspecialchars($cliente['og_descripcion'] ?? 'Suplementos deportivos en Río Tercero. Creatina, proteína, colágeno y más. ¡Escribinos por WhatsApp!');
 $og_image_url    = $seo_base_url . $seo_og_image_path;
 $og_image_alt    = htmlspecialchars($cliente['nombre']) . ' — ' . htmlspecialchars($cliente['rubro'] ?? 'Suplementos Deportivos') . ' en ' . $seo_localidad;
 $canonical_url   = $seo_base_url;
@@ -241,8 +241,8 @@ $ld_json['@graph'] = array_merge($ld_json['@graph'], $ld_products, $ld_offers);
     <meta property="og:locale" content="es_AR">
     <meta property="og:url" content="<?= $canonical_url ?>/">
     <meta property="og:image" content="<?= $og_image_url ?>">
-    <meta property="og:image:width" content="300">
-    <meta property="og:image:height" content="300">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="<?= $og_image_alt ?>">
     <meta property="og:site_name" content="<?= htmlspecialchars($cliente['nombre']) ?>">
 
