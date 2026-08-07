@@ -38,38 +38,63 @@ $canonical_url   = $seo_base_url;
 
 // ─── JSON-LD Structured Data ────────────────────────────────
 $ld_offers = [];
+$ld_products = [];
+
+$offerIndex = 0;
 foreach ($cliente['productos'] as $p) {
+    $productId  = $seo_base_url . '/#product-' . ($offerIndex + 1);
+    $offerId    = $seo_base_url . '/#offer-' . ($offerIndex + 1);
+    $offerIndex++;
+
+    $ld_products[] = [
+        '@type' => 'Product',
+        '@id'   => $productId,
+        'name' => $p['nombre'],
+        'description' => $p['descripcion'],
+        'category' => 'Suplementos Deportivos',
+        'image' => $seo_base_url . '/assets/img/' . $p['imagen'],
+        'offers' => ['@id' => $offerId],
+    ];
+
     $ld_offers[] = [
         '@type' => 'Offer',
+        '@id'   => $offerId,
         'price' => '0',
         'priceCurrency' => 'ARS',
         'availability' => 'https://schema.org/InStock',
         'url' => 'https://wa.me/' . $wa_number . '?text=' . urlencode('Hola! Vi ' . $p['nombre'] . ' en tu web y quisiera más información'),
-        'itemOffered' => [
-            '@type' => 'Product',
-            'name' => $p['nombre'],
-            'description' => $p['descripcion'],
-            'category' => 'Suplementos Deportivos',
-            'image' => $seo_base_url . '/assets/img/' . $p['imagen'],
-        ],
+        'itemOffered' => ['@id' => $productId],
     ];
+
+    $ld_store_offers[] = ['@id' => $offerId];
 }
 
 // Categorías de productos que el negocio cubre (para SEO en LLMs)
 $seo_categorias = $cliente['seo_categorias'] ?? [];
 foreach ($seo_categorias as $cat) {
+    $productId = $seo_base_url . '/#product-' . ($offerIndex + 1);
+    $offerId   = $seo_base_url . '/#offer-' . ($offerIndex + 1);
+    $offerIndex++;
+
+    $ld_products[] = [
+        '@type' => 'Product',
+        '@id'   => $productId,
+        'name' => $cat,
+        'category' => 'Suplementos Deportivos',
+        'offers' => ['@id' => $offerId],
+    ];
+
     $ld_offers[] = [
         '@type' => 'Offer',
+        '@id'   => $offerId,
         'price' => '0',
         'priceCurrency' => 'ARS',
         'availability' => 'https://schema.org/InStock',
         'url' => 'https://wa.me/' . $wa_number . '?text=' . urlencode('Hola! Quiero info sobre ' . $cat),
-        'itemOffered' => [
-            '@type' => 'Product',
-            'name' => $cat,
-            'category' => 'Suplementos Deportivos',
-        ],
+        'itemOffered' => ['@id' => $productId],
     ];
+
+    $ld_store_offers[] = ['@id' => $offerId];
 }
 
 $ld_sameas = array_values(array_filter([
@@ -113,7 +138,7 @@ $ld_json = [
             ],
             'hasMap' => $cliente['ubicaciones'][0]['gmaps_link'] ?? '',
             'sameAs' => $ld_sameas,
-            'makesOffer' => $ld_offers,
+            'makesOffer' => $ld_store_offers,
             'founder' => [
                 '@type' => 'Person',
                 'name' => 'Emiliano Zebalos',
@@ -166,6 +191,9 @@ foreach ($seo_marcas as $i => $marca) {
         'description' => $marca . ' — Marca de suplementos deportivos disponible en ' . $cliente['nombre'] . ' en ' . $seo_localidad,
     ];
 }
+
+// Agregar Products y Offers al @graph
+$ld_json['@graph'] = array_merge($ld_json['@graph'], $ld_products, $ld_offers);
 ?>
 <!DOCTYPE html>
 <html lang="es">
