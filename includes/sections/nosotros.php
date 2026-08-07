@@ -35,7 +35,8 @@ $galeria = $cliente['nosotros_galeria'] ?? [
                 <img src="<?= htmlspecialchars($item['imagen']) ?>"
                      alt="<?= htmlspecialchars($item['alt'] ?? $cliente['nombre']) ?>"
                      class="gallery-img"
-                     loading="lazy">
+                     loading="lazy"
+                     width="600" height="600">
             </div>
             <?php endforeach; ?>
         </div>

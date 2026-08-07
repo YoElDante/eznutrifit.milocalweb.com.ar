@@ -23,7 +23,8 @@ $mlw_wa_full   = 'https://wa.me/' . $mlw_wa_number . '?text=' . $mlw_wa_msg;
             <img src="<?= $img ?>milocalweb/logos/logo-principal-690x300-transp.webp"
                  alt="MiLocalWeb.com.ar — Páginas web para negocios locales"
                  class="aside-logo-img"
-                 loading="lazy">
+                 loading="lazy"
+                 width="691" height="300">
         </a>
 
         <div class="aside-texto">

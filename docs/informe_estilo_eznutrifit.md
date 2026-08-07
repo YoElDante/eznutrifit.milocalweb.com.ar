@@ -28,6 +28,7 @@ Se utilizan para dar profundidad, textura o llamar la atención en casos muy pun
 *   **Rojo Deportivo (Acento Secundario/Alerta)**
     *   **Uso:** Muy puntual para destacar información específica de urgencia o jerarquía secundaria (ej. "[ STAND PRESENTE ]", "SPONSOR OFICIAL").
     *   **RGBA:** `rgba(235, 45, 45, 1)` (Aprox. `#EB2D2D`)
+    *   **Nota de accesibilidad:** en la web se usa `#FF5555` como valor accesible (contraste ≥ 4.5:1 sobre fondos oscuros) y `#FF7777` para el estado hover.
 
 ---
 
@@ -55,6 +56,16 @@ La marca emplea una estrategia visual conocida como **"High-Contrast Neon"** (Ne
     *   El **Blanco** se usa para guiar el ojo hacia la información que *necesita ser leída y comprendida* de forma clara.
     *   El **Verde** se aplica selectivamente para *impactar* y vender la emoción o el concepto principal (el nombre del deporte, la oferta "COMBO", o la marca "EZ").
 3.  **Uso de Texturas como Color:** El gris no se usa como un color plano, sino a través de texturas crudas (piedras en la foto del producto, ruido fílmico o grano fotográfico en los fondos, asfalto). Esto le otorga a la marca una personalidad "callejera", resistente, rústica e industrial, alejándola de una estética clínica o farmacéutica, y acercándola al mundo del esfuerzo físico y el entrenamiento duro ("Hardcore").
+
+## Ajustes de Accesibilidad (WCAG AA)
+
+Para garantizar un contraste mínimo de 4.5:1 en textos pequeños sobre los fondos oscuros de la landing:
+
+*   **Textos secundarios / grises:** usar opacidad ≥ 0.65 sobre blanco puro cuando el fondo sea `#050505` o `#0D0D0D`.
+*   **Slogan del aside (`.aside-slogan`):** opacidad 0.85 sobre el verde principal `#8DC63F`.
+*   **Slogan del footer (`.footer-slogan`):** opacidad 0.8 sobre el blanco semitransparente del footer.
+*   **Headings del footer (`.footer-social h4`, `.footer-actions h4`):** opacidad 0.65 sobre el blanco semitransparente del footer.
+*   **Acento rojo:** se adoptó `#FF5555` (hover `#FF7777`) para superar el umbral de contraste sobre fondos oscuros.
 
 ## Recomendaciones para Diseño Web:
 *   **Fondo de la Web:** Dark Mode por defecto (Fondos casi negros: `#121212`).

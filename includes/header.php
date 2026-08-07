@@ -258,19 +258,27 @@ $ld_json['@graph'] = array_merge($ld_json['@graph'], $ld_products, $ld_offers);
     <link rel="icon" type="image/x-icon" href="<?= $fav ?>">
     <link rel="shortcut icon" type="image/x-icon" href="<?= $fav ?>">
 
+    <!-- Preload imagen crítica del hero (LCP) -->
+    <?php if (!empty($cliente['hero_img'])): ?>
+    <link rel="preload" as="image" href="<?= htmlspecialchars($cliente['hero_img']) ?>" type="image/webp" fetchpriority="high">
+    <?php endif; ?>
+
     <!-- JSON-LD Structured Data for AI / Search Engines -->
     <script type="application/ld+json">
     <?= json_encode($ld_json, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?>
     </script>
 
-    <!-- Google Fonts: Bebas Neue para headings -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Fuentes auto-hosteadas (render-blocking intencional, archivo local pequeño) -->
+    <link rel="stylesheet" href="<?= $assets ?>/fonts/fonts.css?v=<?= filemtime(__DIR__ . '/../assets/fonts/fonts.css') ?>">
 
-    <?php foreach ($cssFiles as $file): ?>
-    <link rel="stylesheet" href="<?= $css . $file . $cssVersions[$file] ?>">
-    <?php endforeach; ?>
+    <!-- Critical CSS inline: navbar + hero + variables base (above-the-fold) -->
+    <style>
+    <?= file_get_contents(__DIR__ . '/../assets/css/critical.css') ?>
+    </style>
+
+    <!-- CSS no crítico cargado de forma asíncrona (no bloquea render) -->
+    <link rel="preload" href="<?= $css ?>styles.css?v=<?= $stylesVersion ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="<?= $css ?>styles.css?v=<?= $stylesVersion ?>"></noscript>
 
     <!-- Colores del cliente -->
     <?php if (!empty($cs)): ?>
@@ -297,9 +305,10 @@ $ld_json['@graph'] = array_merge($ld_json['@graph'], $ld_products, $ld_offers);
             <div class="navbar-brand">
                 <a href="#" class="brand-link">
                     <img src="<?= $logo_src ?>"
-alt="Logo <?= htmlspecialchars($cliente['nombre']) ?> — Suplementos deportivos en <?= $seo_localidad ?>"
-                          class="brand-logo"
-                         loading="eager">
+                         alt="Logo <?= htmlspecialchars($cliente['nombre']) ?> — Suplementos deportivos en <?= $seo_localidad ?>"
+                         class="brand-logo"
+                         loading="eager"
+                         width="300" height="300">
                     <span class="brand-name"><?= htmlspecialchars($cliente['nombre']) ?></span>
                 </a>
             </div>

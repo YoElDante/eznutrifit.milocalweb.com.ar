@@ -22,7 +22,8 @@ $logo_src  = $cliente['logo_img'] ?? $img . 'logo.png';
                 <img src="<?= $logo_src ?>"
                      alt="<?= htmlspecialchars($cliente['nombre']) ?> — Suplementos deportivos en Río Tercero"
                      class="footer-logo"
-                     loading="lazy">
+                     loading="lazy"
+                     width="300" height="300">
                 <p class="footer-slogan"><?= htmlspecialchars($cliente['slogan']) ?></p>
             </div>
 
@@ -73,9 +74,10 @@ $logo_src  = $cliente['logo_img'] ?? $img . 'logo.png';
         <div class="footer-badge">
             <a href="https://milocalweb.com.ar#contacto" target="_blank" rel="noopener" class="footer-mlw-logo" title="MiLocalWeb.com.ar — Páginas web para negocios locales">
                  <img src="<?= $img ?>milocalweb/logos/logo-principal-690x300-transp.webp"
-                      alt="MiLocalWeb.com.ar — Páginas web para negocios locales"
-                      class="mlw-logo-img"
-                     loading="lazy">
+                       alt="MiLocalWeb.com.ar — Páginas web para negocios locales"
+                       class="mlw-logo-img"
+                       loading="lazy"
+                       width="691" height="300">
             </a>
             <div class="footer-badge-text">
                 <p>
@@ -112,7 +114,7 @@ $logo_src  = $cliente['logo_img'] ?? $img . 'logo.png';
     </a>
 
     <?php foreach ($jsFiles as $file): ?>
-    <script src="<?= $js . $file . $jsVersions[$file] ?>"></script>
+    <script src="<?= $js . $file . $jsVersions[$file] ?>" defer></script>
     <?php endforeach; ?>
 </body>
 </html>

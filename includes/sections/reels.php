@@ -53,7 +53,7 @@ $reels = [
                     </button>
                 </div>
                 <div class="reel-info">
-                    <h4><?= htmlspecialchars($reel['titulo']) ?></h4>
+                    <h3><?= htmlspecialchars($reel['titulo']) ?></h3>
                     <p><?= htmlspecialchars($reel['desc']) ?></p>
                 </div>
             </div>

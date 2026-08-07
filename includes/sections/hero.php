@@ -30,7 +30,8 @@ $wa_full     = $wa_link . '?text=' . $wa_msg;
             <div class="hero-content hero-content--right">
                 <img src="<?= $logo_src ?>"
                      alt="Logo <?= htmlspecialchars($cliente['nombre']) ?> — Suplementos deportivos en Río Tercero"
-                     class="hero-logo">
+                     class="hero-logo"
+                     width="300" height="300">
                 <h1 class="hero-title"><?= htmlspecialchars(($cliente['seo_keywords_primarias'] ?? 'Suplementos Deportivos') . ' en ' . ($cliente['seo_localidad'] ?? 'Río Tercero')) ?></h1>
                 <?php if (!empty($cliente['hero_descripcion'])): ?>
                 <p class="hero-subtitle"><?= nl2br(htmlspecialchars($cliente['hero_descripcion'])) ?></p>
@@ -60,12 +61,15 @@ $wa_full     = $wa_link . '?text=' . $wa_msg;
                 <img src="<?= $hero_img ?>"
                      alt="<?= htmlspecialchars($cliente['nombre']) ?> — Suplementos deportivos en Río Tercero"
                      class="hero-image"
-                     loading="eager">
+                     loading="eager"
+                     fetchpriority="high"
+                     width="575" height="800">
             </div>
             <div class="hero-content hero-content--centered">
                 <img src="<?= $logo_src ?>"
                      alt="Logo <?= htmlspecialchars($cliente['nombre']) ?> — Suplementos deportivos en Río Tercero"
-                     class="hero-logo">
+                     class="hero-logo"
+                     width="300" height="300">
                 <h1 class="hero-title"><?= htmlspecialchars(($cliente['seo_keywords_primarias'] ?? 'Suplementos Deportivos') . ' en ' . ($cliente['seo_localidad'] ?? 'Río Tercero')) ?></h1>
                 <?php if (!empty($cliente['hero_descripcion'])): ?>
                 <p class="hero-subtitle"><?= nl2br(htmlspecialchars($cliente['hero_descripcion'])) ?></p>
@@ -88,7 +92,8 @@ $wa_full     = $wa_link . '?text=' . $wa_msg;
             <div class="hero-content">
                 <img src="<?= $logo_src ?>"
                      alt="Logo <?= htmlspecialchars($cliente['nombre']) ?> — Suplementos deportivos en Río Tercero"
-                     class="hero-logo">
+                     class="hero-logo"
+                     width="300" height="300">
                 <h1 class="hero-title"><?= htmlspecialchars(($cliente['seo_keywords_primarias'] ?? 'Suplementos Deportivos') . ' en ' . ($cliente['seo_localidad'] ?? 'Río Tercero')) ?></h1>
                 <?php if (!empty($cliente['hero_descripcion'])): ?>
                 <p class="hero-subtitle"><?= nl2br(htmlspecialchars($cliente['hero_descripcion'])) ?></p>
@@ -106,7 +111,9 @@ $wa_full     = $wa_link . '?text=' . $wa_msg;
                 <img src="<?= $hero_img ?>"
                      alt="<?= htmlspecialchars($cliente['nombre']) ?> — Suplementos deportivos en Río Tercero"
                      class="hero-image"
-                     loading="eager">
+                     loading="eager"
+                     fetchpriority="high"
+                     width="575" height="800">
             </div>
         </div>
     <?php endif; ?>

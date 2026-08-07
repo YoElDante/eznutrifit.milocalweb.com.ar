@@ -33,7 +33,8 @@ if (empty($productos)) {
                     <img src="<?= $img . $img_file ?>"
                          alt="<?= htmlspecialchars($p['nombre'] ?? 'Producto ' . ($i + 1)) ?> — EZ Nutrifit Río Tercero"
                          class="producto-img"
-                         loading="lazy">
+                         loading="lazy"
+                         width="600" height="600">
                 </div>
                 <div class="producto-body">
                     <h3 class="producto-nombre"><?= htmlspecialchars($p['nombre'] ?? 'Producto ' . ($i + 1)) ?></h3>

@@ -19,10 +19,11 @@ $wa_full   = $wa_link . '?text=' . $wa_msg;
         <div class="estrella-grid">
             <!-- Imagen principal -->
             <div class="estrella-imagen">
-                <img                      src="<?= $img ?>cliente/impacto/estrella-mutantmass-creatina.webp"
+                <img src="<?= $img ?>cliente/impacto/estrella-mutantmass-creatina.webp"
                      alt="Combo Explosivo EZ Nutrifit — Mutantmass + Creatina"
                      class="estrella-img"
-                     loading="lazy">
+                     loading="lazy"
+                     width="600" height="600">
             </div>
 
             <!-- Contenido -->
@@ -76,9 +77,10 @@ $wa_full   = $wa_link . '?text=' . $wa_msg;
             <div class="secundaria-card" tabindex="0">
                 <div class="secundaria-img-wrap">
                      <img src="<?= $img ?>cliente/impacto/complemento-thermofuelmax.webp"
-                         alt="Thermo Fuel Max — Quemador de grasa"
-                         class="secundaria-img"
-                         loading="lazy">
+                          alt="Thermo Fuel Max — Quemador de grasa"
+                          class="secundaria-img"
+                          loading="lazy"
+                          width="600" height="600">
                     <div class="secundaria-overlay">
                         <h4>Thermo Fuel Max</h4>
                         <p>Quemador de grasa con 6 extractos naturales. Inhibidor del apetito y activador del metabolismo. 120 cápsulas, libre de cafeína.</p>
@@ -90,9 +92,10 @@ $wa_full   = $wa_link . '?text=' . $wa_msg;
             <div class="secundaria-card" tabindex="0">
                 <div class="secundaria-img-wrap">
                      <img src="<?= $img ?>cliente/impacto/complemento-betaalanine-creatine.webp"
-                         alt="Creatina + Beta Alanina — Sinergia"
-                         class="secundaria-img"
-                         loading="lazy">
+                          alt="Creatina + Beta Alanina — Sinergia"
+                          class="secundaria-img"
+                          loading="lazy"
+                          width="600" height="600">
                     <div class="secundaria-overlay">
                         <h4>Creatina + Beta Alanina</h4>
                         <p>Juntos potencian la fuerza, resistencia y crecimiento muscular. Retrasan la fatiga y maximizan el rendimiento en cada entrenamiento.</p>
@@ -104,9 +107,10 @@ $wa_full   = $wa_link . '?text=' . $wa_msg;
             <div class="secundaria-card" tabindex="0">
                 <div class="secundaria-img-wrap">
                      <img src="<?= $img ?>cliente/impacto/complemento-betaalanine.webp"
-                         alt="Beta Alanina — 300gr"
-                         class="secundaria-img"
-                         loading="lazy">
+                          alt="Beta Alanina — 300gr"
+                          class="secundaria-img"
+                          loading="lazy"
+                          width="600" height="600">
                     <div class="secundaria-overlay">
                         <h4>Beta Alanina</h4>
                         <p>Aminoácido que reduce la fatiga muscular durante el ejercicio intenso. Aumenta carnosina, fuerza y potencia. 300gr — 150 servicios. Libre de gluten.</p>

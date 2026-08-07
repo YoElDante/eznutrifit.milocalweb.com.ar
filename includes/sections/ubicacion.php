@@ -17,6 +17,18 @@ if (empty($ubicaciones)) {
         'gmaps_link'  => $cliente['gmaps_link'] ?? '',
     ]];
 }
+
+// Devuelve atributos width/height para un logo de ubicación.
+function ubicacion_logo_dims($logoUrl) {
+    $path = __DIR__ . '/../../' . ltrim($logoUrl, '/');
+    if (is_file($path) && function_exists('getimagesize')) {
+        $info = getimagesize($path);
+        if ($info) {
+            return ' width="' . $info[0] . '" height="' . $info[1] . '"';
+        }
+    }
+    return '';
+}
 ?>
 <section id="ubicacion" class="section section-ubicacion" aria-label="Ubicación">
     <div class="section-container">
@@ -30,7 +42,7 @@ if (empty($ubicaciones)) {
                 <div class="ubicacion-info">
                     <div class="ubicacion-header">
                         <?php if (!empty($ubi['logo'])): ?>
-                        <img src="<?= htmlspecialchars($ubi['logo']) ?>" alt="<?= htmlspecialchars($ubi['nombre']) ?>" class="ubicacion-logo">
+                        <img src="<?= htmlspecialchars($ubi['logo']) ?>" alt="<?= htmlspecialchars($ubi['nombre']) ?>" class="ubicacion-logo"<?= ubicacion_logo_dims($ubi['logo']) ?> loading="lazy">
                         <?php endif; ?>
                         <?php if (!empty($ubi['nombre'])): ?>
                         <h3 class="ubicacion-punto"><?= htmlspecialchars($ubi['nombre']) ?></h3>
@@ -59,7 +71,16 @@ if (empty($ubicaciones)) {
 
                 <!-- Mapa a la derecha -->
                 <div class="ubicacion-mapa">
-                    <?= $ubi['gmaps_embed'] ?? '' ?>
+                    <?php
+                        $iframeTitle = !empty($ubi['nombre'])
+                            ? 'Mapa de ubicación de ' . htmlspecialchars($ubi['nombre'])
+                            : 'Mapa de ubicación';
+                        $embed = $ubi['gmaps_embed'] ?? '';
+                        if ($embed !== '' && preg_match('/<iframe\b/i', $embed) && !preg_match('/<iframe\b[^>]*\btitle=/i', $embed)) {
+                            $embed = preg_replace('/<iframe/i', '<iframe title="' . $iframeTitle . '"', $embed, 1);
+                        }
+                        echo $embed;
+                    ?>
                 </div>
             </div>
         </div>

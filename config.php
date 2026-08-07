@@ -31,8 +31,8 @@ return [
     'colors' => [
         'color-primary'       => '#8DC63F',
         'color-primary-hover' => '#A8D95A',
-        'color-accent'        => '#EB2D2D',
-        'color-accent-hover'  => '#FF5555',
+        'color-accent'        => '#FF5555',
+        'color-accent-hover'  => '#FF7777',
         'color-text'          => '#FFFFFF',
         'color-muted'         => '#A0A0A0',
         'color-bg'            => '#0D0D0D',

@@ -100,6 +100,39 @@ When `docs/guia-relevamiento.md` is complete:
 - PENDING fields → `''` in config.php
 - NO APLICA fields → `''` in config.php
 
+## CSS Delivery Optimization (Performance 95+)
+
+Every landing page MUST use Critical CSS inline + async bundle:
+
+1. **Source files** stay modular in `assets/css/*.css`.
+2. **`assets/css/critical.css`** contains only above-the-fold styles:
+   - `:root` CSS variables
+   - Base reset (`html`, `body`, `img`, `a`)
+   - Navbar (including mobile hamburger)
+   - Hero (all layouts + critical responsive breakpoints)
+3. **`tools/build-css.php`** combines all modular source files into a single
+   `assets/css/styles.css` at build/deploy time. It performs conservative
+   minification (removes comments and redundant whitespace).
+4. **`includes/header.php`** must:
+   - Load local fonts from `assets/fonts/fonts.css` synchronously (small, local).
+   - Inline `assets/css/critical.css` inside a `<style>` tag.
+   - Load `assets/css/styles.css` asynchronously:
+     ```html
+     <link rel="preload" href="assets/css/styles.css?v=..." as="style" onload="this.onload=null;this.rel='stylesheet'">
+     <noscript><link rel="stylesheet" href="assets/css/styles.css?v=..."></noscript>
+     ```
+5. **After any CSS change**, run:
+   ```bash
+   php tools/build-css.php
+   ```
+6. **Self-host fonts** in `assets/fonts/` instead of Google Fonts to avoid
+   third-party requests and simplify CSP.
+
+**Anti-patterns to avoid:**
+- ❌ Do NOT generate CSS bundles at runtime (no `bundle.php`).
+- ❌ Do NOT load multiple render-blocking CSS files.
+- ❌ Do NOT load Google Fonts synchronously from `fonts.googleapis.com`.
+
 ## Implementation Checklist
 
 Before considering a landing page complete, verify:
@@ -107,12 +140,14 @@ Before considering a landing page complete, verify:
 - [ ] `config.php` complete with no placeholders
 - [ ] All images in `assets/img/` follow naming convention
 - [ ] No `.txt` files in asset directories
-- [ ] `AGENTS.md` present in project root
+- [ ] `AGENTS.md` present in project root and up to date
 - [ ] `docs/ficha-cliente.md` complete and up to date
 - [ ] Footer MiLocalWeb visible and functional
 - [ ] Aside publicitario present
 - [ ] WhatsApp float functional
 - [ ] Meta tags correct (title, description, OG)
-- [ ] `.htaccess` with HTTPS forced and cache
+- [ ] `.htaccess` with HTTPS forced, cache and CSP
+- [ ] CSS build ran: `php tools/build-css.php` and `assets/css/styles.css` exists
+- [ ] `assets/css/critical.css` inline in `<head>` and `styles.css` loaded async
 - [ ] Responsive on mobile
 - [ ] No PHP errors (display_errors off in production)

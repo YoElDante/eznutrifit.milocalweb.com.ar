@@ -24,8 +24,11 @@ $js      = $assets . '/js/';
 $img     = $assets . '/img/';
 $svg     = __DIR__ . '/assets/img/svg/';
 
-// Cache busting para múltiples archivos CSS/JS divididos por componente
-$cssFiles = [
+// Archivos CSS fuente (modulares). Se combinan en build time con:
+//   php tools/build-css.php
+// El resultado es assets/css/styles.css, que se carga de forma asíncrona.
+// El CSS crítico (navbar + hero + variables) va inline en header.php.
+$cssSourceFiles = [
     'base.css',
     'navbar.css',
     'hero.css',
@@ -43,11 +46,9 @@ $jsFiles = [
     'reels.js',
 ];
 
-$cssVersions = [];
-foreach ($cssFiles as $file) {
-    $path = __DIR__ . '/assets/css/' . $file;
-    $cssVersions[$file] = is_file($path) ? '?v=' . filemtime($path) : '';
-}
+// Cache busting para styles.css (filemtime del bundle generado).
+$stylesPath = __DIR__ . '/assets/css/styles.css';
+$stylesVersion = is_file($stylesPath) ? filemtime($stylesPath) : time();
 
 $jsVersions = [];
 foreach ($jsFiles as $file) {

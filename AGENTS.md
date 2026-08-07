@@ -181,8 +181,34 @@ La landing está optimizada para búsquedas locales en Google. Elementos clave:
 - **JS:** Vanilla JS. Sin frameworks. Mínimo y solo para interacción esencial.
 - **Imágenes:** Formato WebP prioritario. Lazy loading por defecto.
 - **Tipografía:** `system-ui` como fallback. Google Fonts solo si el cliente tiene
-  tipografía corporativa definida.
+  tipografía corporativa definida; de preferencia auto-hosteadas en `assets/fonts/`.
 - **Íconos:** SVG inline (evitar icon fonts, evitan requests extra).
 - **Rendimiento:** Sin jQuery, sin Bootstrap, sin Tailwind. CSS hecho a medida.
+
+### Entrega de CSS (Performance 95+)
+
+Para evitar render-blocking y minimizar requests HTTP, se usa la técnica
+**Critical CSS inline + bundle asíncrono en build time**:
+
+1. **Archivos fuente modulares** en `assets/css/*.css` (base, navbar, hero, sections, etc.).
+2. **`assets/css/critical.css`** con el CSS imprescindible para pintar el
+   above-the-fold (variables, reset, navbar y hero). Se inyecta inline en
+   `includes/header.php` dentro de `<style>`.
+3. **`tools/build-css.php`** combina todos los archivos fuente en un único
+   `assets/css/styles.css` en build/deploy time (no runtime).
+4. **`assets/css/styles.css`** se carga de forma **asíncrona** con:
+   ```html
+   <link rel="preload" href="assets/css/styles.css?v=..." as="style" onload="this.onload=null;this.rel='stylesheet'">
+   <noscript><link rel="stylesheet" href="assets/css/styles.css?v=..."></noscript>
+   ```
+5. Después de modificar cualquier `.css`, correr:
+   ```bash
+   php tools/build-css.php
+   ```
+
+**Reglas:**
+- ❌ No generar el bundle en runtime (evita ejecutar PHP por cada request de CSS).
+- ✅ Los archivos fuente modulares se mantienen; el bundle es un artefacto de build.
+- ✅ Fuentes auto-hosteadas en `assets/fonts/` para eliminar requests a terceros.
 
 > **Convención de nombres de assets, mapeo config.php, y checklist**: ver skill `milocalweb-landing`.
