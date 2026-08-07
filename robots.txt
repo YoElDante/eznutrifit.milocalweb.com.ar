@@ -1,0 +1,15 @@
+# MiLocalWeb — eznutrifit.milocalweb.com.ar
+# Permite indexación completa de Google y Bing
+
+User-agent: *
+Allow: /
+Sitemap: https://eznutrifit.milocalweb.com.ar/sitemap.xml
+
+# Bloquear rastreo de archivos internos
+Disallow: /config.php
+Disallow: /includes/
+Disallow: /docs/
+Disallow: /skills/
+
+# Crawl delay amigable
+Crawl-delay: 10

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:geo="http://www.google.com/geo/schemas/sitemap/1.0">
+  <url>
+    <loc>https://eznutrifit.milocalweb.com.ar/</loc>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <geo:geo>
+      <geo:format>georss</geo:format>
+    </geo:geo>
+    <image:image>
+      <image:loc>https://eznutrifit.milocalweb.com.ar/assets/img/cliente/logos/logo-300x300-transp.webp</image:loc>
+      <image:title>EZ Nutrifit — Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://eznutrifit.milocalweb.com.ar/assets/img/cliente/identidad/hero-fondo-gris-575x800.webp</image:loc>
+      <image:title>EZ Nutrifit — Hero</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://eznutrifit.milocalweb.com.ar/assets/img/cliente/productos/prod-colageno.webp</image:loc>
+      <image:title>EZ Nutrifit — Colágeno</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://eznutrifit.milocalweb.com.ar/assets/img/cliente/productos/prod-electrolytes.webp</image:loc>
+      <image:title>EZ Nutrifit — Electrolytes Blend</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://eznutrifit.milocalweb.com.ar/assets/img/cliente/productos/prod-combo-star.webp</image:loc>
+      <image:title>EZ Nutrifit — Combo Star Volumen + Recuperación</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://eznutrifit.milocalweb.com.ar/assets/img/cliente/impacto/estrella-mutantmass-creatina.webp</image:loc>
+      <image:title>EZ Nutrifit — Combo Explosivo</image:title>
+    </image:image>
+  </url>
+</urlset>

@@ -24,13 +24,36 @@ $js      = $assets . '/js/';
 $img     = $assets . '/img/';
 $svg     = __DIR__ . '/assets/img/svg/';
 
-// Cache busting
-$cssFile    = __DIR__ . '/assets/css/styles.css';
-$jsFile     = __DIR__ . '/assets/js/main.js';
-$cssVersion = is_file($cssFile) ? '?v=' . filemtime($cssFile) : '';
-$jsVersion  = is_file($jsFile)  ? '?v=' . filemtime($jsFile)  : '';
-define('CSS_VERSION', $cssVersion);
-define('JS_VERSION', $jsVersion);
+// Cache busting para múltiples archivos CSS/JS divididos por componente
+$cssFiles = [
+    'base.css',
+    'navbar.css',
+    'hero.css',
+    'sections.css',
+    'aside.css',
+    'clientes.css',
+    'footer.css',
+    'responsive.css',
+];
+
+$jsFiles = [
+    'back-to-top.js',
+    'navbar.js',
+    'smooth-scroll.js',
+    'reels.js',
+];
+
+$cssVersions = [];
+foreach ($cssFiles as $file) {
+    $path = __DIR__ . '/assets/css/' . $file;
+    $cssVersions[$file] = is_file($path) ? '?v=' . filemtime($path) : '';
+}
+
+$jsVersions = [];
+foreach ($jsFiles as $file) {
+    $path = __DIR__ . '/assets/js/' . $file;
+    $jsVersions[$file] = is_file($path) ? '?v=' . filemtime($path) : '';
+}
 
 require_once __DIR__ . '/includes/header.php';
 ?>

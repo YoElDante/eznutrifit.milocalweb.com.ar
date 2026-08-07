@@ -19,7 +19,7 @@ $wa_full   = $wa_link . '?text=' . $wa_msg;
         <div class="estrella-grid">
             <!-- Imagen principal -->
             <div class="estrella-imagen">
-                <img src="<?= $img ?>cliente/impacto/combo%20Mutantmass%2B%20creatina.webp"
+                <img                      src="<?= $img ?>cliente/impacto/estrella-mutantmass-creatina.webp"
                      alt="Combo Explosivo EZ Nutrifit — Mutantmass + Creatina"
                      class="estrella-img"
                      loading="lazy">
@@ -75,7 +75,7 @@ $wa_full   = $wa_link . '?text=' . $wa_msg;
         <div class="estrella-secundarias">
             <div class="secundaria-card" tabindex="0">
                 <div class="secundaria-img-wrap">
-                    <img src="<?= $img ?>cliente/impacto/thermofuelmax.webp"
+                     <img src="<?= $img ?>cliente/impacto/complemento-thermofuelmax.webp"
                          alt="Thermo Fuel Max — Quemador de grasa"
                          class="secundaria-img"
                          loading="lazy">
@@ -89,7 +89,7 @@ $wa_full   = $wa_link . '?text=' . $wa_msg;
 
             <div class="secundaria-card" tabindex="0">
                 <div class="secundaria-img-wrap">
-                    <img src="<?= $img ?>cliente/impacto/beta%20alanine%20%2B%20creatine.webp"
+                     <img src="<?= $img ?>cliente/impacto/complemento-betaalanine-creatine.webp"
                          alt="Creatina + Beta Alanina — Sinergia"
                          class="secundaria-img"
                          loading="lazy">
@@ -103,7 +103,7 @@ $wa_full   = $wa_link . '?text=' . $wa_msg;
 
             <div class="secundaria-card" tabindex="0">
                 <div class="secundaria-img-wrap">
-                    <img src="<?= $img ?>cliente/impacto/betaalanine.webp"
+                     <img src="<?= $img ?>cliente/impacto/complemento-betaalanine.webp"
                          alt="Beta Alanina — 300gr"
                          class="secundaria-img"
                          loading="lazy">

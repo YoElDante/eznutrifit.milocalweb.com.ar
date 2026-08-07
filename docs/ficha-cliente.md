@@ -1,130 +1,233 @@
-# Ficha del Cliente — [EZ Nutrifit]
+# Ficha del Cliente — EZ Nutrifit
 
-> **Instrucciones**: Copiá esta ficha a la carpeta `docs/` del cliente y completá todos los campos.
-> La IA usará estos datos para generar automáticamente la landing page y el `config.php`.
+> Ficha canónica del negocio. Describe QUÉ es el cliente, no CÓMO se implementa.
+> A partir de este documento la IA genera el `config.php` automáticamente.
 
 ---
 
 ## Datos Básicos
 
 - **Nombre del negocio**: EZ Nutrifit
-- **Slogan** (una frase corta y potente): Estamos con vos y para vos!
-- **Rubro / categoría**: Suplementos Dietarios para Deportistas - Nutrición - Indumentaria Deportiva - Suplementación - Deportistas - Indumentaria para Running y Ciclismo
-- **WhatsApp** (código país + número, sin + ni espacios, ej: `5493513783473`): +5493571597376
-- **Email de contacto**: no disponible por el momento
-- **Mensaje por defecto para WhatsApp** (ej: `Hola! Vi tu web y quisiera más info`): 
+- **Dueño / Contacto**: Emiliano Zebalos
+- **Slogan**: Estamos con vos y para vos!
+- **Rubro**: Suplementos Dietarios — Nutrición — Indumentaria Deportiva
+- **WhatsApp**: +54 9 3571 59-7376
+- **Email**: No utiliza email para atención al cliente
+- **Mensaje por defecto para WhatsApp**: Hola! Vi tu web y quisiera más info
 
 ---
 
 ## Identidad Visual
 
-- **Color primario** (hex, ej: `#5A9939`): 
-- **Color primario hover** (más claro, ej: `#7BC352`): 
-- **Color de acento** (hex, ej: `#EF6015`): 
-- **Color de acento hover** (más claro, ej: `#FF8A45`): 
-- **Tipografía preferida** (Google Fonts o system, ej: `Poppins`): 
-- **Estilo visual**: [ moderno / clásico / minimalista / vibrante / elegante ]
-- **Esquema de colores descriptivo** (para que la IA entienda la vibra, ej: "tonos tierra cálidos con acentos dorados"): 
-- **Notas de diseño** (cualquier preferencia o restricción visual): 
+> Fuente: análisis de redes sociales del cliente. Estilo "High-Contrast Neon".
+
+- **Concepto**: Neón de alto contraste sobre fondos oscuros. Estética "hardcore", callejera, industrial. Nada clínico ni farmacéutico.
+- **Color primario (verde neón)**: `#8DC63F` — Botones, CTAs, palabras clave, logo "EZ"
+- **Color primario hover**: `#A8D95A` — Versión más clara para hover states
+- **Color de acento (rojo deportivo)**: `#EB2D2D` — Alertas, destacados puntuales ("SPONSOR OFICIAL")
+- **Color de acento hover**: `#FF5555`
+- **Fondo principal**: Negro puro `#0D0D0D` — Dark mode por defecto
+- **Fondo secundario**: `#1A1A1A` — Cards y superficies elevadas
+- **Texto**: Blanco `#FFFFFF` para legibilidad
+- **Texto muted**: `#A0A0A0` — Información secundaria
+- **Tipografía**: Montserrat (Google Fonts) — Sans-serif geométrica, pesos regular a bold
+- **Tipografía de titulares**: Sans-serif ultra-negrita condensada (estilo Impact / Anton / Bebas Neue) con variante itálica para el logo
+- **Estrategia de color**: Fondos extremadamente oscuros hacen que el verde neón resalte por contraste (efecto "glow"). El blanco guía la lectura. El gris se usa como textura (ruido, piedra, asfalto), no como color plano.
+- **Imágenes**: Preferentemente en blanco y negro / escala de grises, con overlays tipográficos en verde neón
+- **Textura de fondo**: `assets/img/cliente/identidad/textura-fondo.jpg`
 
 ---
 
 ## Hero Section
 
-- **Layout del hero** (elegir uno): [ `img-right` / `img-left` / `stacked` ]
-  - `img-right`: imagen grande a la derecha, texto y logo a la izquierda
-  - `img-left`: imagen grande a la izquierda, texto y logo a la derecha
-  - `stacked`: imagen arriba ocupando todo el ancho, texto abajo centrado
-- **Archivo de la imagen hero** (nombre del archivo en `assets/img/`): `hero.jpg`
-- **Texto del botón principal** (ej: `Escribinos por WhatsApp`): 
-- **Descripción breve debajo del slogan** (2-3 líneas): 
+- **Layout**: `split` — Imagen grande a la izquierda, texto y logo a la derecha
+- **Imagen**: `assets/img/cliente/identidad/hero-fondo-gris-575x800.webp`
+- **Descripción**: Suplementación deportiva de alto rendimiento. Vos decidís tu meta, nosotros te acompañamos. Desde Río Tercero para todo el interior de Córdoba.
+- **Texto del botón**: Escribinos por WhatsApp
 
 ---
 
 ## Productos Destacados
 
-### Producto 1
-- **Nombre**: 
-- **Descripción breve** (1-2 líneas): 
-- **Archivo de imagen** (en `assets/img/`): `producto-1.jpg`
+### Producto 1 — Colágeno
+- **Descripción**: Da fuerza a los huesos, flexibilidad a las articulaciones y suaviza la piel. Reduce arrugas, celulitis y previene la caída del cabello.
+- **Imagen**: `assets/img/cliente/productos/prod-colageno.webp`
 
-### Producto 2
-- **Nombre**: 
-- **Descripción breve** (1-2 líneas): 
-- **Archivo de imagen** (en `assets/img/`): `producto-2.jpg`
+### Producto 2 — Electrolytes Blend
+- **Descripción**: Hidratación y recuperación en cápsulas prácticas. 6 minerales y vitaminas. Sin azúcar, sin calorías. El futuro de la hidratación eficiente.
+- **Imagen**: `assets/img/cliente/productos/prod-electrolytes.webp`
 
-### Producto 3
-- **Nombre**: 
-- **Descripción breve** (1-2 líneas): 
-- **Archivo de imagen** (en `assets/img/`): `producto-3.jpg`
+### Producto 3 — Combo Star Volumen + Recuperación
+- **Descripción**: Mutantmass 1.5kg + Creatina 300gr micronizada. Ganador de peso con 23g de proteínas por toma. Mejorá tu rendimiento y recuperación.
+- **Imagen**: `assets/img/cliente/productos/prod-combo-star.webp`
 
 ---
 
-## Ubicación
-tiene dos puntos de ventas / stands en estos momentos
+## Producto Estrella — Combo Explosivo
 
-uno dentro de un gymnacio llamado [FREEBOX] de un tercero: Santiago del Estero 1402 y Esquina con San Martin, Codigo Postal X5850, Localidad de Rio Tercero, Cordoba, Argentina
-url exacta de google:https://www.google.com/maps/place/FREE+BOX/@-32.1691175,-64.1359509,393a,75y,207.79h,89.63t/data=!3m7!1e1!3m5!1sv5Sfl4H3iFsCMXMQg82OKQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0.3744117821565993%26panoid%3Dv5Sfl4H3iFsCMXMQg82OKQ%26yaw%3D207.79225009308266!7i16384!8i8192!4m12!1m5!8m4!1e2!2s115086534099968977998!3m1!1e1!3m5!1s0x95cd6fcc6bfb9423:0x89cf8d0071c5f8c7!8m2!3d-32.1692529!4d-64.136046!16s%2Fg%2F11sr0yksnm?entry=ttu&g_ep=EgoyMDI2MDgwMi4wIKXMDSoASAFQAw%3D%3D
+> Sección showcase dedicada al producto principal. Imagen grande + ficha técnica + CTA directo a WhatsApp.
 
-- **Dirección completa** (como aparece en Google Maps): 
-- **Google Maps — iframe embed** (copiá el código `<iframe>` completo desde Maps → Compartir → Insertar mapa): <iframe src="https://www.google.com/maps/embed?pb=!4v1785879348364!6m8!1m7!1sv5Sfl4H3iFsCMXMQg82OKQ!2m2!1d-32.16911750119117!2d-64.1359509106605!3f207.79!4f-0.37000000000000455!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+- **Nombre**: Combo Explosivo
+- **Bajada**: Ganador de peso + Creatina
+- **Descripción**: El combo definitivo de Star Nutrition: Mutantmass 1.5kg con 23g de proteínas y 59g de carbohidratos por toma, más Creatina 300gr monohidrato micronizada. Potenciado con óxido nítrico, bajo en azúcar y libre de gluten.
+- **Imagen principal**: `assets/img/cliente/impacto/estrella-mutantmass-creatina.webp`
+- **Mensaje de WhatsApp**: "Hola! Quiero info sobre el Combo Explosivo de EZ Nutrifit"
+- **Ficha nutricional**:
+  - 23g Proteínas por toma
+  - 59g Carbohidratos por toma
+  - 382 Kcal por toma
+- **Beneficios**:
+  - Aumento de fuerza y resistencia
+  - Promueve el crecimiento muscular
+  - Incrementa el rendimiento deportivo
+  - Retrasa la aparición de la fatiga
+  - Mejora la recuperación post-entrenamiento
 
-otro dentro de un local de ropa deportiva [Origen] de un tercero: Ejercito de los Andes 129, Codigo Postal X5850, Río Tercero, Córdoba
-url exacta de google: https://www.google.com/maps/place/Ejercito+de+los+Andes+160,+X5850+R%C3%ADo+Tercero,+C%C3%B3rdoba/@-32.1838975,-64.1178576,385a,75y,40.14h,80.19t/data=!3m7!1e1!3m5!1s0DRb6BJvnYAJhdTUsiKhgg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D9.805113236809333%26panoid%3D0DRb6BJvnYAJhdTUsiKhgg%26yaw%3D40.14255343337237!7i16384!8i8192!4m15!1m8!3m7!1s0x95cd6f1604d97083:0xeb8fb043662d9a55!2sEjercito+de+los+Andes+160,+X5850+R%C3%ADo+Tercero,+C%C3%B3rdoba!3b1!8m2!3d-32.1839922!4d-64.1175126!16s%2Fg%2F11h8b49sff!3m5!1s0x95cd6f1604d97083:0xeb8fb043662d9a55!8m2!3d-32.1839922!4d-64.1175126!16s%2Fg%2F11h8b49sff?hl=es&entry=ttu&g_ep=EgoyMDI2MDgwMi4wIKXMDSoASAFQAw%3D%3D
+### Productos complementarios al Combo
 
-- **Dirección completa** (como aparece en Google Maps): 
-- **Google Maps — iframe embed** (copiá el código `<iframe>` completo desde Maps → Compartir → Insertar mapa):<iframe src="https://www.google.com/maps/embed?pb=!4v1785879449188!6m8!1m7!1s0DRb6BJvnYAJhdTUsiKhgg!2m2!1d-32.18389750124488!2d-64.1178575519279!3f41.809607718238155!4f-8.7969833712622!5f1.0485071130740424" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+| Producto | Descripción |
+|----------|-------------|
+| **Thermo Fuel Max** | Quemador de grasa con 6 extractos naturales. Inhibidor del apetito y activador del metabolismo. 120 cápsulas, libre de cafeína. |
+| **Creatina + Beta Alanina** | Juntos potencian la fuerza, resistencia y crecimiento muscular. Retrasan la fatiga y maximizan el rendimiento. |
+| **Beta Alanina** | Aminoácido que reduce la fatiga muscular durante el ejercicio intenso. Aumenta carnosina, fuerza y potencia. 300gr — 150 servicios. Libre de gluten. |
 
+---
 
-- **¿Mostrar estrellas de reputación?**: [ no ]
-- **Calificación** (ej: `4.8`): 
-- **Cantidad de reseñas** (ej: `124`): 
-- **Horario de atención** (ej: `Lunes a Viernes 9:00-18:00 | Sábados 9:00-13:00`): 
+## Ubicaciones
+
+EZ Nutrifit no tiene local propio. Opera con stands dentro de gimnasios y locales de terceros en Río Tercero, Córdoba.
+
+### FREE BOX Gimnasio
+- **Dirección**: Santiago del Estero 1402, esq. San Martín, X5850, Río Tercero, Córdoba, Argentina
+- **Google Maps**: https://www.google.com/maps?q=-32.1692529,-64.136046
+- **Logo del tercero**: `assets/img/terceros/logo-freebox-450x253.webp`
+
+### Origen Run & Bike
+- **Dirección**: Ejército de los Andes 129, X5850, Río Tercero, Córdoba, Argentina
+- **Google Maps**: https://www.google.com/maps?q=-32.1839922,-64.1175126
+- **Logo del tercero**: `assets/img/terceros/logo-origen-300x295.webp`
+
+### Gimnasio Henko
+- **Dirección**: Mitre 38, X5850, Río Tercero, Córdoba, Argentina
+- **Google Maps**: https://www.google.com/maps?q=-32.1719297,-64.1224399
+- **Logo del tercero**: `assets/img/terceros/logo-henko-300x399.webp`
+
+### Somaginci Gym
+- **Dirección**: Felipe Varela y San Miguel, X5850, Río Tercero, Córdoba, Argentina
+- **Google Maps**: https://www.google.com/maps?q=-32.1733538,-64.1236002
+- **Logo del tercero**: `assets/img/terceros/logo-somaginci-600x271.webp`
+
+### Información de atención
+- **Estrellas / Reseñas**: No disponible (el negocio no tiene perfil de Google Business con reseñas)
+- **Horarios**: No informados por el cliente
+
+---
+
+## SEO
+
+- **Keywords primarias**: Suplementos Deportivos
+- **Keywords de producto**: Colágeno, Electrolytes Blend, Combo Star Volumen + Recuperación, Creatina, Proteína, Beta Alanina, Thermo Fuel Max
+- **Localidad**: Río Tercero
+- **Provincia**: Córdoba
+- **Zona de influencia**: Interior de Córdoba, Valle de Calamuchita, Villa General Belgrano, Embalse, Santa Rosa de Calamuchita, Almafuerte, Tancacha
+- **Coordenadas (lat, long)**: -32.1692529, -64.136046
+- **Google Maps link**: https://www.google.com/maps?q=-32.1692529,-64.136046
+- **Google Business Profile URL**: No disponible
 
 ---
 
 ## Redes Sociales
 
-- **Instagram** (URL completa): https://www.instagram.com/ez.nutrifit/
-- **Facebook** (URL completa): https://www.facebook.com/suplementosEZ
-- **TikTok** (URL completa, dejar vacío si no tiene): 
-- **Sitio web propio** (URL completa, dejar vacío si no tiene): eznutrifit.milocalweb.com.ar
-- **Otra red** (LinkedIn, YouTube, etc. — especificar nombre y URL): 
+| Red | URL |
+|-----|-----|
+| Instagram | https://www.instagram.com/ez.nutrifit/ |
+| Facebook | https://www.facebook.com/suplementosEZ |
+| TikTok | No tiene |
+| Web | https://eznutrifit.milocalweb.com.ar |
 
 ---
 
-## Quiénes Somos / Sobre el Negocio
+## Quiénes Somos
 
-- **Texto "Quiénes somos"** (3-5 líneas contando la historia, qué hacen, qué los diferencia): Pasión por la suplementación deportiva - Vos decidis tu meta, nosotros te acompañamos. Desde Río Tercero y para todo el interior de Córdoba.
-
----
-
-## Notas Adicionales
-
-- **Pedidos especiales del cliente**: 
-- **Restricciones o cosas a evitar**: 
-- **Competencia / inspiración** (links a webs que le gustan): 
-https://es.weblium.com/templates/demo/powerlifting-trainer-website-design-12
-
-https://es.weblium.com/templates/demo/nutritionist-website-design-113
-- **Observaciones de la visita / reunión**: 
-- **Fecha del relevamiento**: 
+Pasión por la suplementación deportiva. Vos decidís tu meta, nosotros te acompañamos. Desde Río Tercero y para todo el interior de Córdoba.
 
 ---
 
-## Convención de Archivos de Imagen
+## Reels / Videos Educativos
 
-Para que la IA genere la landing automáticamente, las imágenes deben guardarse en `assets/img/` con estos nombres exactos:
+> Sección con 3 videos locales. Lazy loading (preload="none"), cada uno con título y descripción.
 
-| Archivo | Sección | Qué contiene |
-|---------|---------|--------------|
-| `logo.webp` | Navbar, Hero, Footer | Logo del negocio (fondo transparente, PNG) |
-\assets\img\cliente\logos
-alli esta en 800x800 y en 300x300 comun y transparente
+| Video | Título | Descripción |
+|-------|--------|-------------|
+| `assets/vid/reels/suplementos-pilares-escenciales.mp4` | Suplementos esenciales | Conocé los pilares de la suplementación deportiva y para qué sirve cada uno. |
+| `assets/vid/reels/incluir-aminoacidos-bcaa.mp4` | Aminoácidos BCAA | Por qué incluir aminoácidos en tu rutina y cómo mejoran tu recuperación. |
+| `assets/vid/reels/beneficios-creatina-beta-alanine.mp4` | Creatina + Beta Alanina | Los beneficios de combinar estos dos suplementos para maximizar tu rendimiento. |
 
-| `hero.jpg` | Hero | Foto grande del frente del negocio o producto estrella |
-| `producto-1.jpg` | Productos | Producto destacado 1 |
-| `producto-2.jpg` | Productos | Producto destacado 2 |
-| `producto-3.jpg` | Productos | Producto destacado 3 |
-| `local-1.jpg` | Nosotros | Foto del interior del local |
-| `local-2.jpg` | Nosotros | Foto del equipo o fachada |
+---
+
+## Galería de Imágenes
+
+### Logos
+| Archivo | Descripción |
+|---------|-------------|
+| `assets/img/cliente/logos/logo-300x300-transp.webp` | Logo con transparencia, 300x300 |
+| `assets/img/cliente/logos/logo-300x300.webp` | Logo con fondo, 300x300 |
+| `assets/img/cliente/logos/logo-800x800.webp` | Logo alta resolución, 800x800 |
+
+### Identidad visual
+| Archivo | Descripción |
+|---------|-------------|
+| `assets/img/cliente/identidad/hero-fondo-gris-575x800.webp` | Imagen principal del Hero |
+| `assets/img/cliente/identidad/hero-fondo-gris-1024x1424.webp` | Versión alta resolución |
+| `assets/img/cliente/identidad/identidad-indumentaria-800x800.webp` | Foto de indumentaria deportiva |
+| `assets/img/cliente/identidad/identidad-indumentaria-1024x1024.webp` | Versión alta resolución |
+| `assets/img/cliente/identidad/textura-fondo.jpg` | Textura de fondo para secciones |
+
+### Productos
+| Archivo | Producto |
+|---------|----------|
+| `assets/img/cliente/productos/prod-colageno.webp` | Colágeno |
+| `assets/img/cliente/productos/prod-electrolytes.webp` | Electrolytes Blend |
+| `assets/img/cliente/productos/prod-combo-star.webp` | Combo Star Volumen |
+
+### Imágenes de impacto (producto estrella y galería)
+| Archivo | Uso |
+|---------|-----|
+| `assets/img/cliente/impacto/estrella-mutantmass-creatina.webp` | Imagen principal del Combo Explosivo |
+| `assets/img/cliente/impacto/complemento-betaalanine-creatine.webp` | Complementario + galería nosotros |
+| `assets/img/cliente/impacto/complemento-betaalanine.webp` | Complementario + galería nosotros |
+| `assets/img/cliente/impacto/complemento-thermofuelmax.webp` | Complementario Thermo Fuel Max |
+
+### Íconos
+| Archivo | Uso |
+|---------|-----|
+| `assets/img/cliente/iconos/favicon.ico` | Favicon del sitio |
+
+### Terceros
+| Archivo | Negocio |
+|---------|---------|
+| `assets/img/terceros/logo-freebox-450x253.webp` | FREE BOX |
+| `assets/img/terceros/logo-origen-300x295.webp` | Origen Run & Bike |
+| `assets/img/terceros/logo-henko-300x399.webp` | Henko Gym |
+| `assets/img/terceros/logo-somaginci-600x271.webp` | Somaginci Gym |
+
+---
+
+## Inspiración / Referencias
+
+> Webs que le gustaron al cliente:
+
+- https://es.weblium.com/templates/demo/powerlifting-trainer-website-design-12
+- https://es.weblium.com/templates/demo/nutritionist-website-design-113
+
+---
+
+## Datos Pendientes
+
+> Información que el cliente todavía no proveyó o no aplica:
+
+- Horarios de atención
+- Email de contacto (no utiliza)
+- Estrellas y reseñas de Google (no tiene perfil con reseñas)
+- TikTok (no tiene)
+- Fecha del relevamiento inicial

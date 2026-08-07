@@ -10,26 +10,26 @@
 
 $reels = [
     [
-        'src'    => '/assets/vid/reels/suplementos%20pilares%20escenciales%20.mp4',
-        'poster' => '/assets/vid/reels/suplementos%20pilares%20escenciales.webp',
+        'src'    => '/assets/vid/reels/suplementos-pilares-escenciales.mp4',
+        'poster' => '/assets/vid/reels/suplementos-pilares-escenciales.webp',
         'titulo' => 'Suplementos esenciales',
         'desc'   => 'Conocé los pilares de la suplementación deportiva y para qué sirve cada uno.',
     ],
     [
-        'src'    => '/assets/vid/reels/incluir%20aminoacidos%20Bcaa%20.mp4',
-        'poster' => '/assets/vid/reels/incluir%20aminoacidos%20Bcaa.webp',
-        'titulo' => 'Aminoácidos BCAA',
+        'src'    => '/assets/vid/reels/incluir-aminoacidos-bcaa.mp4',
+        'poster' => '/assets/vid/reels/incluir-aminoacidos-bcaa.webp',
+        'titulo' => 'Aminoácidos BCAA (Ramificados)',
         'desc'   => 'Por qué incluir aminoácidos en tu rutina y cómo mejoran tu recuperación.',
     ],
     [
-        'src'    => '/assets/vid/reels/Beneficios%20de%20combinar%20Creatina%20y%20Beta%20Alanine.mp4',
-        'poster' => '/assets/vid/reels/Beneficios%20de%20combinar%20Creatina%20y%20Beta%20Alanine.webp',
+        'src'    => '/assets/vid/reels/beneficios-creatina-beta-alanine.mp4',
+        'poster' => '/assets/vid/reels/beneficios-creatina-beta-alanine.webp',
         'titulo' => 'Creatina + Beta Alanina',
         'desc'   => 'Los beneficios de combinar estos dos suplementos para maximizar tu rendimiento.',
     ],
 ];
 ?>
-<section id="nosotros" class="section section-reels" aria-label="Videos educativos">
+<section id="reels" class="section section-reels" aria-label="Videos educativos">
     <div class="section-container">
         <h2 class="section-title">Conocenos en acción</h2>
         <p class="section-subtitle">Aprendé sobre suplementación, entrenamiento y nutrición deportiva. Informate con nosotros y llevá tu rendimiento al próximo nivel.</p>

@@ -18,8 +18,8 @@ if (empty($productos)) {
 ?>
 <section id="productos" class="section section-productos" aria-label="Productos destacados">
     <div class="section-container">
-        <h2 class="section-title">Productos Destacados</h2>
-        <p class="section-subtitle">Conocé lo mejor que tenemos para ofrecerte</p>
+        <h2 class="section-title">Suplementos y Nutrición Deportiva</h2>
+        <p class="section-subtitle">Proteínas, creatinas, colágenos, vitaminas, aminoácidos y más. Trabajamos con Star Nutrition, ENA, Gentech y las mejores marcas.</p>
 
         <div class="productos-grid">
             <?php foreach ($productos as $i => $p): ?>
@@ -31,7 +31,7 @@ if (empty($productos)) {
             <article class="producto-card">
                 <div class="producto-img-wrapper">
                     <img src="<?= $img . $img_file ?>"
-                         alt="<?= htmlspecialchars($p['nombre'] ?? 'Producto ' . ($i + 1)) ?>"
+                         alt="<?= htmlspecialchars($p['nombre'] ?? 'Producto ' . ($i + 1)) ?> — EZ Nutrifit Río Tercero"
                          class="producto-img"
                          loading="lazy">
                 </div>

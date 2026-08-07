@@ -2,6 +2,8 @@
 
 > Instrucciones para asistentes de código. Leer esto ANTES de cualquier acción.
 > Este archivo existe en cada proyecto cliente y es la guía canónica.
+>
+> **Skills disponibles**: `milocalweb-landing` — convenciones técnicas, assets, mapeo config.php, checklist.
 
 ---
 
@@ -31,24 +33,33 @@ Una landing page optimizada para SEO es **uno de los productos del paquete**.
 ├── config.php                 ← ÚNICA fuente de datos del sitio.
 ├── .htaccess                  ← Seguridad, caché, HTTPS forzado.
 ├── assets/
-│   ├── css/styles.css         ← Estilos base (neutros) + variables CSS.
-│   ├── js/main.js             ← Smooth scroll, back-to-top, WhatsApp float.
-│   └── img/
-│       ├── cliente/           ← Imágenes del negocio (logos, productos, fotos).
-│       ├── milocalweb/        ← Assets de MiLocalWeb (logos, iconos).
-│       └── terceros/          ← Logos de terceros (ej. Freebox, Origen).
+│   ├── css/                   ← Estilos divididos por componente.
+│   ├── js/                    ← JS vanilla por funcionalidad.
+│   ├── img/
+│   │   ├── cliente/           ← Imágenes del negocio (logos, productos, fotos).
+│   │   ├── milocalweb/        ← Assets de MiLocalWeb (logos, iconos).
+│   │   └── terceros/          ← Logos de terceros (ej. Freebox, Origen).
+│   └── vid/
+│       └── reels/             ← Videos para la sección Reels (mp4 + posters webp).
 ├── includes/
 │   ├── header.php             ← <head> completo + navbar + inicio del <main>.
 │   ├── footer.php             ← Footer estándar MiLocalWeb + WhatsApp float.
 │   └── sections/
-│       ├── hero.php           ← Hero section (3 layouts configurables).
+│       ├── hero.php           ← Hero section (4 layouts configurables).
 │       ├── productos.php      ← Hasta 3 productos destacados.
+│       ├── estrella.php       ← Producto estrella showcase (hardcodeado, no en config).
 │       ├── ubicacion.php      ← Mapa, dirección, horarios, estrellas.
-│       └── nosotros.php       ← Quiénes somos, galería, redes, CTA final.
-└── docs/
-    ├── ficha-cliente.md       ← Datos estructurados del cliente (template).
-    ├── {cliente}.cliente.md   ← Datos básicos de contacto.
-    └── informe_estilo_{cliente}.md ← Identidad visual (colores, tipografías).
+│       ├── reels.php          ← Videos educativos (hardcodeado, no en config).
+│       ├── nosotros.php       ← Quiénes somos, galería, redes, CTA final.
+│       ├── aside.php          ← Aside publicitario MiLocalWeb.
+│       └── clientes.php       ← Sección "Otros Clientes".
+├── docs/
+│   ├── guia-relevamiento.md   ← Template que completa la persona en campo.
+│   ├── ficha-cliente.md       ← Documento canónico del negocio (generado por IA).
+│   ├── {cliente}.cliente.md   ← Datos crudos del relevamiento (ARCHIVADO).
+│   └── informe_estilo_{cliente}.md ← Identidad visual (colores, tipografías).
+└── skills/
+    └── milocalweb-landing/    ← Skill: convenciones, assets, mapeo, checklist.
 ```
 
 **Principio fundamental:** `config.php` es la fuente única de verdad.
@@ -59,16 +70,35 @@ no aparece en la página.
 
 ## 3. Flujo de Trabajo para un Nuevo Cliente
 
-Cuando se trabaja con un cliente nuevo, el orden es:
+El proceso tiene 2 fases: **relevamiento** (humano) y **generación** (IA).
 
-1. **Leer `docs/ficha-cliente.md`** — contiene todos los datos en formato estructurado
-2. **Leer `docs/informe_estilo_{cliente}.md`** — define la identidad visual
-3. **Llenar `config.php`** con los datos reales del cliente
-4. **NO inventar estilos** — el CSS debe reflejar la identidad del cliente,
-   no un estilo predefinido. Si no hay informe de estilo, usar valores neutros
-   y tipografías system-ui.
-5. **Verificar que las imágenes referenciadas en config.php existen** en `assets/img/`
-6. **Generar/actualizar `sitemap.xml`** si el cliente lo requiere
+### Fase 1 — Relevamiento (persona en campo)
+
+1. Copiar `docs/guia-relevamiento.md` al proyecto del cliente nuevo
+2. Completar TODOS los campos con datos del cliente (visita, llamada, WhatsApp)
+3. Si el cliente tiene redes sociales activas, generar `docs/informe_estilo_{cliente}.md`
+   usando IA para analizar su identidad visual (colores, tipografías, estilo)
+4. Recolectar y guardar las imágenes en `assets/img/cliente/`
+5. Recolectar videos para Reels en `assets/vid/reels/` (si aplica)
+
+### Fase 2 — Generación (IA)
+
+> **Cargar skill `milocalweb-landing`** para el procedimiento detallado, mapeo de
+> campos a config.php y checklist de implementación.
+
+Resumen:
+1. Leer `docs/guia-relevamiento.md` + `docs/informe_estilo_{cliente}.md`
+2. Renombrar assets a la convención, eliminar .txt
+3. Generar `docs/ficha-cliente.md`
+4. Llenar `config.php` con el mapeo del skill
+5. Editar `estrella.php` y/o `reels.php` si el cliente tiene esos contenidos
+6. Marcar `{cliente}.cliente.md` como ARCHIVADO
+7. Pasar la checklist del skill
+
+### Datos que NO van en config.php (están hardcodeados en PHP)
+
+- **Producto estrella** → `includes/sections/estrella.php`
+- **Videos / Reels** → `includes/sections/reels.php`
 
 ---
 
@@ -76,7 +106,7 @@ Cuando se trabaja con un cliente nuevo, el orden es:
 
 La landing está optimizada para búsquedas locales en Google. Elementos clave:
 
-- **Title tag:** `{nombre} — {slogan}` (ej: "EZ Nutrifit — Estamos con vos y para vos!")
+- **Title tag:** `{nombre} — {slogan}`
 - **Meta description:** primeras 160 chars del hero_descripcion
 - **Open Graph:** título, descripción, type=website, locale=es_AR
 - **robots:** index, follow
@@ -91,27 +121,22 @@ La landing está optimizada para búsquedas locales en Google. Elementos clave:
 - La sección de Ubicación debe incluir el iframe embed de Google Maps
 - Las estrellas y reseñas (si existen) deben mostrarse para reforzar prueba social
 - **Zoom estandarizado de mapas:** Todos los iframes de Google Maps deben tener
-  radio de zoom `!1d1500` para mostrar entrecalles y avenidas de forma consistente.
-  Si el embed viene con otro valor (ej. `!1d422`, `!1d13508`), reemplazar por `!1d1500`
+  radio de zoom `!1d1500`. Si el embed viene con otro valor, reemplazar por `!1d1500`
   preservando los valores de `!2d` (longitud) y `!3d` (latitud).
 
 ---
 
 ## 5. Elementos Estándar (Obligatorios en Toda Landing)
 
-Estos componentes van en **todas** las landing pages, sin excepción:
-
 ### Footer MiLocalWeb
 - Logo o nombre de MiLocalWeb con link a `https://milocalweb.com.ar#contacto`
 - Badge: "Hecho con ❤️ por MiLocalWeb.com.ar"
 - CTA: "¿Te gustó esta web? Pedí la tuya sin cargo" → WhatsApp de MiLocalWeb
-- Copyright del cliente
-- Botón "volver arriba"
+- Copyright del cliente + botón "volver arriba"
 
 ### Aside Publicitario
 - Espacio reservado para publicidad de terceros o autopromoción de MiLocalWeb
-- Debe ser discreto, no invasivo
-- En desktop: sidebar lateral; en mobile: banner horizontal entre secciones
+- Debe ser discreto, no invasivo. Desktop: sidebar lateral; mobile: banner horizontal.
 - Contenido configurable vía `config.php`
 
 ### WhatsApp Float
@@ -136,6 +161,8 @@ Estos componentes van en **todas** las landing pages, sin excepción:
 - ❌ Usar lorem ipsum o placeholders — si no hay dato real, mostrar "próximamente"
 - ❌ Hardcodear colores en los templates PHP (usar siempre variables CSS desde config.php)
 - ❌ Agregar dependencias externas innecesarias (JS frameworks, icon fonts pesadas, trackers sin consentimiento)
+- ❌ Usar espacios o mayúsculas en nombres de archivos de assets
+- ❌ Dejar archivos .txt de trabajo en carpetas de imágenes o videos
 
 ### Lo que SIEMPRE se debe hacer:
 - ✅ Mantener `config.php` como fuente única de verdad
@@ -158,20 +185,4 @@ Estos componentes van en **todas** las landing pages, sin excepción:
 - **Íconos:** SVG inline (evitar icon fonts, evitan requests extra).
 - **Rendimiento:** Sin jQuery, sin Bootstrap, sin Tailwind. CSS hecho a medida.
 
----
-
-## 8. Checklist de Implementación
-
-Al terminar una landing page, verificar:
-
-- [ ] `config.php` completo y sin placeholders
-- [ ] Imágenes del cliente en `assets/img/cliente/`
-- [ ] `AGENTS.md` presente en la raíz (este archivo)
-- [ ] `docs/ficha-cliente.md` completo
-- [ ] Footer MiLocalWeb visible y funcional
-- [ ] Aside publicitario presente
-- [ ] WhatsApp float funcional
-- [ ] Meta tags correctos (title, description, OG)
-- [ ] .htaccess con HTTPS forzado y caché
-- [ ] Responsive en mobile (viewport configurado, media queries)
-- [ ] Sin errores de PHP (display_errors off en producción)
+> **Convención de nombres de assets, mapeo config.php, y checklist**: ver skill `milocalweb-landing`.

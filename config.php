@@ -22,9 +22,9 @@ return [
     // ─── Hero Section ────────────────────────────────────────────────
 
     'hero_layout'     => 'split',
-    'hero_descripcion' => 'Suplementación deportiva de alto rendimiento. Vos decidís tu meta, nosotros te acompañamos. Desde Río Tercero para todo el interior de Córdoba.',
+    'hero_descripcion' => 'Creatina, proteína, colágeno, pre-entrenos, aminoácidos y quemadores de grasa en Río Tercero. Marcas líderes como Star Nutrition, ENA y Gentech. Envíos a todo Córdoba.',
     'hero_boton'       => 'Escribinos por WhatsApp',
-    'hero_img'         => '/assets/img/cliente/identidad/ez%20identidad%20fondo%20gris%20575x800.webp',
+    'hero_img'         => '/assets/img/cliente/identidad/hero-fondo-gris-575x800.webp',
 
     // ─── Identidad Visual: High-Contrast Neon ────────────────────────
 
@@ -45,7 +45,7 @@ return [
 
     // ─── Rutas de imágenes ───────────────────────────────────────────
 
-    'logo_img'  => '/assets/img/cliente/logos/logo%20300x300%20transp.webp',
+    'logo_img'  => '/assets/img/cliente/logos/logo-300x300-transp.webp',
     'favicon'   => '/assets/img/cliente/iconos/favicon.ico',
 
     // ─── Productos Destacados ────────────────────────────────────────
@@ -54,17 +54,17 @@ return [
         [
             'nombre'      => 'Colágeno',
             'descripcion' => 'Da fuerza a los huesos, flexibilidad a las articulaciones y suaviza la piel. Reduce arrugas, celulitis y previene la caída del cabello.',
-            'imagen'      => 'cliente/productos/colageno.webp',
+            'imagen'      => 'cliente/productos/prod-colageno.webp',
         ],
         [
             'nombre'      => 'Electrolytes Blend',
             'descripcion' => 'Hidratación y recuperación en cápsulas prácticas. 6 minerales y vitaminas. Sin azúcar, sin calorías. El futuro de la hidratación eficiente.',
-            'imagen'      => 'cliente/productos/Electrolytes.webp',
+            'imagen'      => 'cliente/productos/prod-electrolytes.webp',
         ],
         [
             'nombre'      => 'Combo Star Volumen + Recuperación',
             'descripcion' => 'Mutantmass 1.5kg + Creatina 300gr micronizada. Ganador de peso con 23g de proteínas por toma. Mejorá tu rendimiento y recuperación.',
-            'imagen'      => 'cliente/productos/explosivo.webp',
+            'imagen'      => 'cliente/productos/prod-combo-star.webp',
         ],
     ],
 
@@ -73,28 +73,28 @@ return [
     'ubicaciones' => [
         [
             'nombre'      => 'FREE BOX Gimnasio',
-            'logo'        => '/assets/img/terceros/logo%20freebox%20450x253.webp',
+            'logo'        => '/assets/img/terceros/logo-freebox-450x253.webp',
             'direccion'   => "Santiago del Estero 1402, esq. San Martín\nX5850\nRío Tercero\nCórdoba, Argentina",
             'gmaps_embed' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d-64.13625413423543!3d-32.16930097848404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95cd6fcc6bfb9423%3A0x89cf8d0071c5f8c7!2sFREE%20BOX!5e0!3m2!1ses!2sus!4v1785889933968!5m2!1ses!2sus" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>',
             'gmaps_link'  => 'https://www.google.com/maps?q=-32.1692529,-64.136046',
         ],
         [
             'nombre'      => 'Origen Run & Bike',
-            'logo'        => '/assets/img/terceros/origen%20logo%20300x295.webp',
+            'logo'        => '/assets/img/terceros/logo-origen-300x295.webp',
             'direccion'   => "Ejército de los Andes 129\nX5850\nRío Tercero\nCórdoba, Argentina",
             'gmaps_embed' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d-64.11809079406581!3d-32.18382680384672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95cd6f33c8d75d99%3A0xea6f9f9ecb87cfe0!2sorigen%20run%20%26%20bike!5e0!3m2!1ses!2sar!4v1785889830560!5m2!1ses!2sar" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>',
             'gmaps_link'  => 'https://www.google.com/maps?q=-32.1839922,-64.1175126',
         ],
         [
             'nombre'      => 'Gimancio Henko',
-            'logo'        => '/assets/img/terceros/Logo%20henko%20gym%20300x399.webp',
+            'logo'        => '/assets/img/terceros/logo-henko-300x399.webp',
             'direccion'   => "Mitre 38\nX5850\nRío Tercero\nCórdoba, Argentina",
             'gmaps_embed' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d-64.12243999485902!3d-32.1719297340486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95cd6f006cba0403%3A0x3390974ffa4d7f3e!2sHENKO!5e0!3m2!1ses!2sar!4v1786062325916!5m2!1ses!2sar" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>',
             'gmaps_link'  => 'https://www.google.com/maps?q=-32.1719297,-64.1224399',
         ],
         [
             'nombre'      => 'Somaginci Gym',
-            'logo'        => '/assets/img/terceros/somaginci%20gym%20logo%20600x271.webp',
+            'logo'        => '/assets/img/terceros/logo-somaginci-600x271.webp',
             'direccion'   => "Felipe Varela y San Miguel\nX5850\nRío Tercero\nCórdoba, Argentina",
             'gmaps_embed' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d-64.12360022656418!3d-32.17335382856924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95cd6f37e58c84e7%3A0xffa8877dbad74edb!2sFelipe%20Varela%20%26%20San%20Miguel%2C%20X5850%20R%C3%ADo%20Tercero%2C%20C%C3%B3rdoba!5e0!3m2!1ses!2sar!4v1786063108188!5m2!1ses!2sar" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>',
             'gmaps_link'  => 'https://www.google.com/maps?q=-32.1733538,-64.1236002',
@@ -119,19 +119,31 @@ return [
         'web'       => 'https://eznutrifit.milocalweb.com.ar',
     ],
 
+    // ─── Datos para SEO ───────────────────────────────────────────
+
+    'seo_keywords_primarias' => 'Suplementos Deportivos',
+    'seo_zona_influencia' => 'Interior de Córdoba, Valle de Calamuchita, Villa General Belgrano, Embalse, Santa Rosa de Calamuchita, Almafuerte, Tancacha',
+    'seo_localidad' => 'Río Tercero',
+    'seo_provincia' => 'Córdoba',
+    'seo_og_image' => '/assets/img/cliente/logos/logo-300x300-transp.webp',
+    'seo_lat' => '-32.1692529',
+    'seo_long' => '-64.136046',
+    'seo_categorias' => ['Proteína', 'Creatina', 'Colágeno', 'Pre-entreno', 'Aminoácidos', 'BCAA', 'Vitaminas', 'Quemadores de grasa', 'Carnitina', 'Glutamina', 'Óxido nítrico', 'Ganadores de peso'],
+    'seo_marcas' => ['Star Nutrition', 'ENA', 'Gentech', 'Xtrength', 'Nutrilab', 'HTN', 'Mervick', 'Ultra Tech'],
+
     // ─── Quiénes Somos ───────────────────────────────────────────────
 
-    'nosotros_texto' => 'Pasión por la suplementación deportiva. Vos decidís tu meta, nosotros te acompañamos. Desde Río Tercero y para todo el interior de Córdoba.',
+    'nosotros_texto' => 'Pasión por la suplementación deportiva en Río Tercero. BCAA (Aminoácidos Ramificados), carnitina, glutamina, óxido nítrico y ganadores de peso. Distribuimos Xtrength, Nutrilab, HTN, Mervick, Ultra Tech y más. Envíos a todo el interior de Córdoba.',
 
     // ─── Galería Nosotros ────────────────────────────────────────────
 
     'nosotros_galeria' => [
         [
-            'imagen' => '/assets/img/cliente/impacto/beta%20alanine%20%2B%20creatine.webp',
+            'imagen' => '/assets/img/cliente/impacto/complemento-betaalanine-creatine.webp',
             'alt'    => 'EZ Nutrifit — Suplementos deportivos',
         ],
         [
-            'imagen' => '/assets/img/cliente/impacto/betaalanine.webp',
+            'imagen' => '/assets/img/cliente/impacto/complemento-betaalanine.webp',
             'alt'    => 'EZ Nutrifit — Productos en Río Tercero',
         ],
     ],
@@ -147,14 +159,14 @@ return [
     'clientes' => [
         [
             'nombre' => 'FREE BOX',
-            'logo'   => '/assets/img/terceros/logo%20freebox%20450x253.webp',
+            'logo'   => '/assets/img/terceros/logo-freebox-450x253.webp',
             'url'    => 'https://maps.app.goo.gl/Y1kUc9P4mNK7mtMh9',
             'ancho'  => 120,
             'alto'   => 60,
         ],
         [
             'nombre' => 'Origen',
-            'logo'   => '/assets/img/terceros/origen%20logo%20300x295.webp',
+            'logo'   => '/assets/img/terceros/logo-origen-300x295.webp',
             'url'    => 'https://maps.app.goo.gl/Y1kUc9P4mNK7mtMh9',
             'ancho'  => 120,
             'alto'   => 60,

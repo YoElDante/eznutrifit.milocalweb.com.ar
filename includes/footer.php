@@ -20,7 +20,7 @@ $logo_src  = $cliente['logo_img'] ?? $img . 'logo.png';
         <div class="footer-content">
             <div class="footer-brand">
                 <img src="<?= $logo_src ?>"
-                     alt="<?= htmlspecialchars($cliente['nombre']) ?>"
+                     alt="<?= htmlspecialchars($cliente['nombre']) ?> — Suplementos deportivos en Río Tercero"
                      class="footer-logo"
                      loading="lazy">
                 <p class="footer-slogan"><?= htmlspecialchars($cliente['slogan']) ?></p>
@@ -72,9 +72,9 @@ $logo_src  = $cliente['logo_img'] ?? $img . 'logo.png';
         <!-- Badge MiLocalWeb -->
         <div class="footer-badge">
             <a href="https://milocalweb.com.ar#contacto" target="_blank" rel="noopener" class="footer-mlw-logo" title="MiLocalWeb.com.ar — Páginas web para negocios locales">
-                <img src="<?= $img ?>milocalweb/logos/logo%20principal%20690x300%20transp.webp"
-                     alt="MiLocalWeb.com.ar"
-                     class="mlw-logo-img"
+                 <img src="<?= $img ?>milocalweb/logos/logo-principal-690x300-transp.webp"
+                      alt="MiLocalWeb.com.ar — Páginas web para negocios locales"
+                      class="mlw-logo-img"
                      loading="lazy">
             </a>
             <div class="footer-badge-text">
@@ -111,6 +111,8 @@ $logo_src  = $cliente['logo_img'] ?? $img . 'logo.png';
         <?php include $svg . 'whatsapp.svg'; ?>
     </a>
 
-    <script src="<?= $js ?>main.js<?= JS_VERSION ?>"></script>
+    <?php foreach ($jsFiles as $file): ?>
+    <script src="<?= $js . $file . $jsVersions[$file] ?>"></script>
+    <?php endforeach; ?>
 </body>
 </html>

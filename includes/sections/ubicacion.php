@@ -21,6 +21,7 @@ if (empty($ubicaciones)) {
 <section id="ubicacion" class="section section-ubicacion" aria-label="Ubicación">
     <div class="section-container">
         <h2 class="section-title">Donde nos podés encontrar</h2>
+        <p class="section-subtitle">Visitá nuestros stands de venta y comprá suplementos deportivos de calidad en Río Tercero. Cuatro puntos de venta con las mejores marcas y asesoramiento personalizado.</p>
 
         <?php foreach ($ubicaciones as $i => $ubi): ?>
         <div class="ubicacion-block" style="<?= $i > 0 ? 'margin-top:3rem;' : '' ?>">

@@ -20,8 +20,8 @@ $mlw_wa_full   = 'https://wa.me/' . $mlw_wa_number . '?text=' . $mlw_wa_msg;
 <aside class="publicidad-aside" aria-label="Publicidad">
     <div class="aside-container">
         <a href="https://milocalweb.com.ar" target="_blank" rel="noopener" class="aside-logo" title="MiLocalWeb — más visibilidad, más clientes">
-            <img src="<?= $img ?>milocalweb/logos/logo%20principal%20690x300%20transp.webp"
-                 alt="MiLocalWeb"
+            <img src="<?= $img ?>milocalweb/logos/logo-principal-690x300-transp.webp"
+                 alt="MiLocalWeb.com.ar — Páginas web para negocios locales"
                  class="aside-logo-img"
                  loading="lazy">
         </a>
