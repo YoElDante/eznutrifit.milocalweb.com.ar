@@ -69,6 +69,36 @@ foreach ($cliente['productos'] as $p) {
     $ld_store_offers[] = ['@id' => $offerId];
 }
 
+// Categorías de productos que el negocio cubre (consulta por WhatsApp)
+$seo_categorias = $cliente['seo_categorias'] ?? [];
+foreach ($seo_categorias as $cat) {
+    $productId = $seo_base_url . '/#product-' . ($offerIndex + 1);
+    $offerId   = $seo_base_url . '/#offer-' . ($offerIndex + 1);
+    $offerIndex++;
+
+    $ld_products[] = [
+        '@type' => 'Product',
+        '@id'   => $productId,
+        'name' => $cat,
+        'description' => $cat . ' — Consultá por WhatsApp en ' . $cliente['nombre'] . '. ' . $seo_localidad . ', Córdoba.',
+        'category' => 'Suplementos Deportivos',
+        'image' => $og_image_url,
+        'offers' => ['@id' => $offerId],
+    ];
+
+    $ld_offers[] = [
+        '@type' => 'Offer',
+        '@id'   => $offerId,
+        'price' => '0',
+        'priceCurrency' => 'ARS',
+        'availability' => 'https://schema.org/InStock',
+        'url' => 'https://wa.me/' . $wa_number . '?text=' . urlencode('Hola! Quiero info sobre ' . $cat),
+        'itemOffered' => ['@id' => $productId],
+    ];
+
+    $ld_store_offers[] = ['@id' => $offerId];
+}
+
 $ld_sameas = array_values(array_filter([
     $cliente['redes']['instagram'] ?? '',
     $cliente['redes']['facebook'] ?? '',
