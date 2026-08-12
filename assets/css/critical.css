@@ -35,6 +35,7 @@ body {
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
+  padding-top: 56px;
 }
 img { display: block; max-width: 100%; height: auto; }
 iframe { max-width: 100%; }
@@ -48,8 +49,10 @@ a { color: inherit; text-decoration: none; }
 
 /* ═══ Navbar ═══ */
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 100;
   background: rgba(10, 10, 10, 0.92);
   backdrop-filter: blur(12px);
@@ -117,6 +120,24 @@ a { color: inherit; text-decoration: none; }
   background: var(--color-muted);
   border-radius: 2px;
   transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+/* ─── Overlay (mobile menu backdrop) ──────────────────────────── */
+.navbar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
+  pointer-events: none;
+}
+
+.navbar.open ~ .navbar-overlay {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 /* ═══ Hero (todos los layouts) ═══ */

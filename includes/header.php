@@ -324,7 +324,7 @@ $ld_json['@graph'] = array_merge($ld_json['@graph'], $ld_products, $ld_offers);
                 <li><a href="#estrella">Ofertas</a></li>
                 <li><a href="#productos">Productos</a></li>
                 <li><a href="#ubicacion">Encontranos</a></li>
-                <li><a href="#nosotros">Conocenos en Acción</a></li>
+                <li><a href="#reels">Conocenos en Acción</a></li>
                 <li>                <a href="<?= $wa_full ?>" target="_blank" rel="noopener noreferrer" class="nav-cta">
                     Contactanos
                     <?php include $svg . 'whatsapp.svg'; ?>
