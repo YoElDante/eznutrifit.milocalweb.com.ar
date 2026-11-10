@@ -1,5 +1,10 @@
 # Plan de mejora — Lighthouse móvil informe 01
 
+> **ARCHIVADO — 2026-11-10.**
+> **Motivo:** sus tareas están resueltas (Static Maps y optimizaciones aplicadas en las rondas de fixes) y describe iframes de Google Maps que ya no se usan en producción.
+> **Reemplazado por:** [estado-actual.md](../estado-actual.md); la próxima medición Lighthouse reemplazará a los informes de `docs/informes lighthouse/`.
+> No actualizar este documento: queda como registro histórico.
+
 **Sitio:** https://eznutrifit.milocalweb.com.ar/  
 **Informe base:** `docs/informes lighthouse/01-lighthouse-resumen-eznutrifit-movil.md`  
 **Fecha de implementación:** 07/08/2026  

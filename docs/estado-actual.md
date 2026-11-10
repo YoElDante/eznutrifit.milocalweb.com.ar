@@ -11,6 +11,27 @@ Landing page single-page de EZ Nutrifit, suplementos deportivos en Río Tercero,
 - Meta description sin `mb_strtolower`, WhatsApp del aside corregido, skip-link/foco y CSP/bloqueo de archivos internos.
 - Detalle completo: [Resumen de fixes](../../../docs/resumen-fixes-2026-11-10.md).
 
+### Ronda 2 — 2026-11-10 (detalles restantes de la auditoría)
+
+- **Footer:** `<h4>` → `<h3>`; jerarquía h1→h2→h3 completa. Los 3 `h4` restantes de `estrella.php` son correctos (van bajo un `h3`).
+- **Touch targets ≥44x44:** hamburguesa (navbar.css + critical.css) y links sociales del footer.
+- **Variables CSS derivadas** (`--color-section-dark`, `--color-bg-deep`, `--color-primary-glow`, `--color-whatsapp`) creadas en base.css y critical.css; reemplazados los hardcodeos de footer.css, hero.css, `sections/02-estrella.css` y `sections/03-reels.css`. Bundle regenerado (29.821 bytes).
+- **Canonical fijo:** nueva clave `dominio` en config.php; canonical/OG/JSON-LD ya no dependen de `HTTP_HOST` (P2-12).
+- **Alt text unificado** al formato `{NEGOCIO} — {descripción} en {LOCALIDAD}` en productos, estrella y puntos de venta; `decoding="async"` en los Static Maps (P2-02, P2-13).
+- **Limpieza:** eliminado `$cssSourceFiles` muerto de index.php (P2-11 completo).
+- **Sitemap:** `lastmod` 2026-11-10, 6→13 imágenes y bloque `geo` eliminado (extensión deprecada por Google; las coordenadas quedan en `geo.position`/`ICBM`) (P2-01 parcial).
+- **404:** `ErrorDocument 404 /404.php` + página `404.php` con `noindex` (P2-15); HSTS agregado al .htaccess.
+- **Verificación:** php -l 0 errores; render con 16/16 checks PASS (canonical fijo, sin `127.0.0.1`, `h4`=3 solo estrella, footer `h3`, alts, `#nosotros`, skip-link, 15 Products, JSON-LD válido, `/404.php` con status/body/noindex correctos).
+- **Siguen pendientes:** P2-03 (dedup critical.css vs responsive.css, requiere Lighthouse), P2-07 (`docs/eznutrifit.cliente.md`), P2-09 (`Milocalweb.logo.ico`), P2-14 (docs desactualizados), Lighthouse y re-auditoría de puntaje.
+
+### Ronda 3 — 2026-11-10 (cierre pre-push)
+
+- **SEC-04 completa:** `htmlspecialchars()` en todas las salidas pendientes (`$fav` en `includes/header.php`, `$hero_img` y `$logo_src` en `hero.php` ×3, `$logo_src` en `footer.php`) y `rel="noopener noreferrer"` en los 3 links de MiLocalWeb (footer ×2, aside).
+- **P2-09 resuelto:** `Milocalweb.logo.ico` renombrado a `milocalweb-logo.ico` vía `git mv` (sin usos en código).
+- **P2-14 resuelto por archivado:** creado `docs/_archive/` con `informe-cambios-seo.md`, `plan-mejora-lighthouse-01.md` y `rendimiento navegacion movil.txt`; cada doc lleva cabecera de archivado (fecha + motivo + reemplazo) y el índice vive en `docs/_archive/README.md`. Política de ciclo de vida instaurada: skill `milocalweb-docs`.
+- **CSS profesional con variables:** barrida de literales de color en los 10 CSS fuente (`base/navbar/hero/footer/aside/responsive` + `sections/*.css`): `rgba()` y hex de reglas reemplazados por variables + `color-mix(in srgb, var(--var) N%, transparent)` preservando alphas exactos (74 reemplazos); `--color-white`/`--color-black` agregados a ambos `:root` (idénticos); espejo de `critical.css` actualizado byte a byte (incluye `--shadow-sm`/`--shadow-glass` que faltaban). Excepciones intactas: gradiente de marca Instagram, `#000` en `mask-image` e internos de `:root`. Bundle regenerado: 31.725 bytes, 57 `color-mix()`, cache-bust `?v=1794352720`. Verificación: `php -l` 0 errores y render OK (canonical fijo, 3 `h4`, footer `h3`, alts con localidad, 15 Products, `/404.php` 404+noindex, 5 links `noopener noreferrer`; `rgba(141,198,63)` residual solo en la definición de `--color-primary-glow`).
+- **Sigue pendiente:** P2-03 (requiere Lighthouse), P2-07 (`docs/eznutrifit.cliente.md`), Lighthouse y re-auditoría de puntaje.
+
 > El veredicto y el puntaje de abajo son el corte de la auditoría 2026-11-09; no se recalcularon.
 
 ## Veredicto

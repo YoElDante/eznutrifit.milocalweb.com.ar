@@ -1,5 +1,10 @@
 # Informe de Cambios SEO — EZ Nutrifit
 
+> **ARCHIVADO — 2026-11-10.**
+> **Motivo:** registro de cambios histórico con valores desactualizados (meta description anterior a las rondas de fixes del 2026-11-10); sus tareas están resueltas.
+> **Reemplazado por:** [estado-actual.md](../estado-actual.md) (estado vigente) y el detalle de cambios en `docs/resumen-fixes-2026-11-10.md` del workspace.
+> No actualizar este documento: queda como registro histórico.
+
 > Fecha: 2026-08-07
 > Guía aplicada: `docs/guia-seo-ia.md`
 > Proyecto: eznutrifit.milocalweb.com.ar
