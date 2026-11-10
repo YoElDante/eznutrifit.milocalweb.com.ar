@@ -13,7 +13,7 @@
 
 .producto-card {
   background: var(--color-card-bg);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid color-mix(in srgb, var(--color-white) 6%, transparent);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
@@ -24,15 +24,15 @@
 
 .producto-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 0 24px rgba(141, 198, 63, 0.12);
-  border-color: rgba(141, 198, 63, 0.2);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--color-primary) 12%, transparent);
+  border-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
 }
 
 .producto-img-wrapper {
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.4);
+  background: color-mix(in srgb, var(--color-black) 40%, transparent);
 }
 
 .producto-img {

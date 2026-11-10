@@ -17,6 +17,13 @@
   --color-card-bg: #1A1A1A;
   --color-hero-bg-start: #000000;
   --color-hero-bg-end: #0D1A00;
+  /* Variables derivadas: evitan hardcodear fondos y efectos por sección. */
+  --color-section-dark: #0A0A0A;
+  --color-bg-deep: #050505;
+  --color-primary-glow: rgba(141, 198, 63, 0.4);
+  --color-whatsapp: #25D366;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
 
   --font-heading: 'Bebas Neue', sans-serif;
   --font-body: 'Montserrat', system-ui, -apple-system, sans-serif;

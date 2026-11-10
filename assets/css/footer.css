@@ -6,10 +6,10 @@
 
 .site-footer {
   position: relative;
-  background: #050505;
-  color: rgba(255, 255, 255, 0.75);
+  background: var(--color-bg-deep);
+  color: color-mix(in srgb, var(--color-white) 75%, transparent);
   padding: 3rem 1.5rem 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid color-mix(in srgb, var(--color-white) 5%, transparent);
 }
 
 .footer-content {
@@ -19,7 +19,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-white) 8%, transparent);
 }
 
 .footer-brand {
@@ -42,8 +42,8 @@
   line-height: 1.5;
 }
 
-.footer-social h4,
-.footer-actions h4 {
+.footer-social h3,
+.footer-actions h3 {
   font-family: var(--font-heading);
   font-size: 1.1rem;
   font-weight: 400;
@@ -62,11 +62,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  /* 44x44 mínimo: target táctil accesible. */
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(255, 255, 255, 0.6);
+  background: color-mix(in srgb, var(--color-white) 6%, transparent);
+  color: color-mix(in srgb, var(--color-white) 60%, transparent);
   transition: background 0.2s, color 0.2s, transform 0.15s;
 }
 
@@ -104,7 +105,7 @@
   justify-content: space-between;
   gap: 1.2rem;
   padding: 1.2rem 1.5rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: color-mix(in srgb, var(--color-white) 3%, transparent);
   border-radius: var(--radius);
 }
 
@@ -152,9 +153,9 @@
 }
 
 .footer-badge-cta a {
-  color: #B3B3B3;
+  color: var(--color-muted);
   font-weight: 500;
-  border-bottom: 1px dashed rgba(179, 179, 179, 0.35);
+  border-bottom: 1px dashed color-mix(in srgb, var(--color-muted) 35%, transparent);
   transition: color 0.2s, border-color 0.2s;
 }
 
@@ -173,19 +174,19 @@
   z-index: 200;
   width: 60px;
   height: 60px;
-  background: #25D366;
-  color: #fff;
+  background: var(--color-whatsapp);
+  color: var(--color-text);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 6px 24px color-mix(in srgb, var(--color-whatsapp) 40%, transparent);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .whatsapp-float:hover {
   transform: scale(1.1);
-  box-shadow: 0 8px 32px rgba(37, 211, 102, 0.55);
+  box-shadow: 0 8px 32px color-mix(in srgb, var(--color-whatsapp) 55%, transparent);
 }
 
 /* ─── Back to Top ────────────────────────────────────────────────── */

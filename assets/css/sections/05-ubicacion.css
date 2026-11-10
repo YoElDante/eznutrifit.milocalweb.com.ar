@@ -21,7 +21,7 @@
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-glass);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid color-mix(in srgb, var(--color-white) 6%, transparent);
 }
 
 .ubicacion-mapa iframe,
@@ -49,13 +49,13 @@
   left: 12px;
   max-width: calc(100% - 24px);
   padding: 6px 12px;
-  background: rgba(13, 13, 13, 0.88);
+  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
   color: var(--color-text);
   font-size: 0.85rem;
   font-weight: 600;
   line-height: 1.3;
   border-radius: var(--radius);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid color-mix(in srgb, var(--color-white) 8%, transparent);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   pointer-events: none;

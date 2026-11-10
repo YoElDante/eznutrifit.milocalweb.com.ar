@@ -6,7 +6,7 @@
 /* ─── PRODUCTO ESTRELLA ──────────────────────────────────────────── */
 
 .section-estrella {
-  background: #0A0A0A;
+  background: var(--color-section-dark);
 }
 
 .estrella-grid {
@@ -20,8 +20,8 @@
 .estrella-imagen {
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid rgba(141, 198, 63, 0.1);
-  box-shadow: 0 0 30px rgba(141, 198, 63, 0.06);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 10%, transparent);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--color-primary) 6%, transparent);
 }
 
 .estrella-img {
@@ -63,7 +63,7 @@
 }
 
 .estrella-descripcion strong {
-  color: #fff;
+  color: var(--color-text);
 }
 
 .estrella-nutri {
@@ -79,8 +79,8 @@
   justify-content: center;
   min-width: 100px;
   padding: 1rem 1.2rem;
-  background: rgba(141, 198, 63, 0.06);
-  border: 1px solid rgba(141, 198, 63, 0.12);
+  background: color-mix(in srgb, var(--color-primary) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
   border-radius: var(--radius);
 }
 
@@ -161,7 +161,7 @@
   aspect-ratio: 1 / 1;
   border-radius: var(--radius);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid color-mix(in srgb, var(--color-white) 4%, transparent);
   background: #111;
 }
 
@@ -186,7 +186,7 @@
   flex-direction: column;
   justify-content: flex-end;
   padding: 1.2rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
+  background: linear-gradient(to top, color-mix(in srgb, var(--color-black) 92%, transparent) 0%, color-mix(in srgb, var(--color-black) 50%, transparent) 50%, transparent 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -208,7 +208,7 @@
 
 .secundaria-overlay p {
   font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: color-mix(in srgb, var(--color-white) 80%, transparent);
   line-height: 1.5;
 }
 

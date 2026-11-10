@@ -21,7 +21,7 @@ $logo_src  = $cliente['logo_img'] ?? $img . 'logo.png';
     <footer class="site-footer" role="contentinfo">
         <div class="footer-content">
             <div class="footer-brand">
-                <img src="<?= $logo_src ?>"
+                <img src="<?= htmlspecialchars($logo_src) ?>"
                      alt="<?= htmlspecialchars($cliente['nombre']) ?> — Suplementos deportivos en Río Tercero"
                      class="footer-logo"
                      loading="lazy"
@@ -31,7 +31,7 @@ $logo_src  = $cliente['logo_img'] ?? $img . 'logo.png';
             </div>
 
             <div class="footer-social">
-                <h4>Seguinos</h4>
+                <h3>Seguinos</h3>
                 <div class="social-links">
                     <?php if (!empty($cliente['redes']['instagram'])): ?>
                     <a href="<?= htmlspecialchars($cliente['redes']['instagram']) ?>"
@@ -65,7 +65,7 @@ $logo_src  = $cliente['logo_img'] ?? $img . 'logo.png';
             </div>
 
             <div class="footer-actions">
-                <h4>Contacto</h4>
+                <h3>Contacto</h3>
                 <a href="<?= $wa_full ?>" target="_blank" rel="noopener noreferrer" class="footer-wa-link">
                     <?php include $svg . 'whatsapp.svg'; ?>
                     Escribinos por WhatsApp
@@ -75,7 +75,7 @@ $logo_src  = $cliente['logo_img'] ?? $img . 'logo.png';
 
         <!-- Badge MiLocalWeb -->
         <div class="footer-badge">
-            <a href="https://milocalweb.com.ar#contacto" target="_blank" rel="noopener" class="footer-mlw-logo" title="MiLocalWeb.com.ar — Páginas web para negocios locales">
+            <a href="https://milocalweb.com.ar#contacto" target="_blank" rel="noopener noreferrer" class="footer-mlw-logo" title="MiLocalWeb.com.ar — Páginas web para negocios locales">
                  <img src="<?= $img ?>milocalweb/logos/logo-principal-690x300-transp.webp"
                        alt="MiLocalWeb.com.ar — Páginas web para negocios locales"
                        class="mlw-logo-img"
@@ -87,7 +87,7 @@ $logo_src  = $cliente['logo_img'] ?? $img . 'logo.png';
                 <p>
                     Hecho con <?php include $svg . 'heart.svg'; ?>
                     por
-                    <a href="https://milocalweb.com.ar#contacto" target="_blank" rel="noopener" class="mlw-link">
+                    <a href="https://milocalweb.com.ar#contacto" target="_blank" rel="noopener noreferrer" class="mlw-link">
                         <strong>MiLocalWeb.com.ar</strong>
                     </a>
                 </p>

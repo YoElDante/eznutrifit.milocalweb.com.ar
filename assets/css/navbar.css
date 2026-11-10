@@ -11,9 +11,9 @@
   left: 0;
   width: 100%;
   z-index: 100;
-  background: rgba(10, 10, 10, 0.92);
+  background: color-mix(in srgb, var(--color-section-dark) 92%, transparent);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-white) 6%, transparent);
 }
 
 .navbar {
@@ -88,8 +88,9 @@
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 36px;
-  height: 36px;
+  /* 44x44 mínimo: target táctil accesible (WCAG 2.5.8 / AAA 2.5.5). */
+  width: 44px;
+  height: 44px;
   background: none;
   border: none;
   cursor: pointer;
@@ -122,7 +123,7 @@
 .navbar-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: color-mix(in srgb, var(--color-black) 50%, transparent);
   z-index: 99;
   opacity: 0;
   visibility: hidden;

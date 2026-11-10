@@ -6,7 +6,7 @@
 /* ─── REELS ──────────────────────────────────────────────────────── */
 
 .section-reels {
-  background: #0A0A0A;
+  background: var(--color-section-dark);
 }
 
 .reels-grid {
@@ -19,12 +19,12 @@
 .reel-card {
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid color-mix(in srgb, var(--color-white) 4%, transparent);
   background: var(--color-card-bg);
   box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.4),
-    0 4px 12px rgba(0, 0, 0, 0.3),
-    0 0 30px rgba(141, 198, 63, 0.08);
+    0 1px 2px color-mix(in srgb, var(--color-black) 40%, transparent),
+    0 4px 12px color-mix(in srgb, var(--color-black) 30%, transparent),
+    0 0 30px color-mix(in srgb, var(--color-primary) 8%, transparent);
 }
 
 .reel-wrapper {
@@ -46,8 +46,8 @@
   border: none;
   border-radius: 50%;
   background: radial-gradient(circle at center,
-    rgba(255, 255, 255, 0.2) 0%,
-    rgba(255, 255, 255, 0.12) 55%,
+    color-mix(in srgb, var(--color-white) 20%, transparent) 0%,
+    color-mix(in srgb, var(--color-white) 12%, transparent) 55%,
     transparent 56%);
   cursor: pointer;
   display: flex;
@@ -62,8 +62,8 @@
 .reel-play-btn:hover {
   transform: translate(-50%, -50%) scale(1.15);
   background: radial-gradient(circle at center,
-    rgba(255, 255, 255, 0.3) 0%,
-    rgba(255, 255, 255, 0.18) 55%,
+    color-mix(in srgb, var(--color-white) 30%, transparent) 0%,
+    color-mix(in srgb, var(--color-white) 18%, transparent) 55%,
     transparent 56%);
 }
 
@@ -76,7 +76,7 @@
   border-top: 11px solid transparent;
   border-bottom: 11px solid transparent;
   margin-left: 4px;
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 2px 3px color-mix(in srgb, var(--color-black) 50%, transparent));
 }
 
 .reel-wrapper.playing .reel-play-btn {

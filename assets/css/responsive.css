@@ -37,7 +37,7 @@
   }
 
   .hero-split-overlay {
-    background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.4) 22%, rgba(0,0,0,0.85) 48%, #0D0D0D 65%);
+    background: linear-gradient(to bottom, transparent 0%, color-mix(in srgb, var(--color-black) 40%, transparent) 22%, color-mix(in srgb, var(--color-black) 85%, transparent) 48%, var(--color-bg) 65%);
   }
 
   .hero--split .hero-container {
@@ -163,9 +163,9 @@
     flex-direction: column;
     gap: 0;
     padding: 5rem 1.5rem 2rem;
-    background: rgba(10, 10, 10, 0.98);
+    background: color-mix(in srgb, var(--color-section-dark) 98%, transparent);
     backdrop-filter: blur(16px);
-    border-left: 1px solid rgba(255, 255, 255, 0.06);
+    border-left: 1px solid color-mix(in srgb, var(--color-white) 6%, transparent);
     visibility: hidden;
     opacity: 0;
     transform: translateX(100%);
@@ -181,7 +181,7 @@
   }
 
   .navbar-menu li {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-white) 6%, transparent);
   }
 
   .navbar-menu a {
