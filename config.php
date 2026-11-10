@@ -16,6 +16,7 @@ return [
     'slogan'    => 'Estamos con vos y para vos!',
     'rubro'     => 'Suplementos Dietarios — Nutrición — Indumentaria Deportiva',
     'whatsapp'  => '5493571597376',
+    'dominio'   => 'https://eznutrifit.milocalweb.com.ar',
     'email'     => '',
     'whatsapp_mensaje' => 'Hola! Vi tu web y quisiera más info',
     'founder_name'  => 'Emiliano Zebalos',

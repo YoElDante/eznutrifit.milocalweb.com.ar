@@ -101,7 +101,7 @@ function ubicacion_static_map_url($lat, $lng, $ancho = 640, $alto = 350, $zoom =
                 <div class="ubicacion-info">
                     <div class="ubicacion-header">
                         <?php if (!empty($ubi['logo'])): ?>
-                        <img src="<?= htmlspecialchars($ubi['logo']) ?>" alt="<?= htmlspecialchars($ubi['nombre']) ?>" class="ubicacion-logo"<?= ubicacion_logo_dims($ubi['logo']) ?> loading="lazy" decoding="async">
+                        <img src="<?= htmlspecialchars($ubi['logo']) ?>" alt="<?= htmlspecialchars($ubi['nombre']) ?> — punto de venta en <?= htmlspecialchars($cliente['seo_localidad']) ?>, <?= htmlspecialchars($cliente['seo_provincia']) ?>" class="ubicacion-logo"<?= ubicacion_logo_dims($ubi['logo']) ?> loading="lazy" decoding="async">
                         <?php endif; ?>
                         <?php if (!empty($ubi['nombre'])): ?>
                         <h3 class="ubicacion-punto"><?= htmlspecialchars($ubi['nombre']) ?></h3>
@@ -148,7 +148,8 @@ function ubicacion_static_map_url($lat, $lng, $ancho = 640, $alto = 350, $zoom =
                                  alt="<?= $mapAlt ?>"
                                  class="ubicacion-mapa-img"
                                  width="640" height="350"
-                                 loading="lazy">
+                                 loading="lazy"
+                                 decoding="async">
                             <?php if (!empty($ubi['nombre'])): ?>
                             <span class="ubicacion-mapa-label"><?= htmlspecialchars($ubi['nombre']) ?></span>
                             <?php endif; ?>

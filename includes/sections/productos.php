@@ -32,7 +32,7 @@ if (empty($productos)) {
             <article class="producto-card">
                 <div class="producto-img-wrapper">
                     <img src="<?= $img . $img_file ?>"
-                         alt="<?= htmlspecialchars($p['nombre'] ?? 'Producto ' . ($i + 1)) ?> — EZ Nutrifit Río Tercero"
+                         alt="<?= htmlspecialchars($cliente['nombre']) ?> — <?= htmlspecialchars($p['nombre'] ?? 'Producto ' . ($i + 1)) ?> en <?= htmlspecialchars($cliente['seo_localidad']) ?>"
                          class="producto-img"
                          loading="lazy"
                          decoding="async"

@@ -24,26 +24,6 @@ $js      = $assets . '/js/';
 $img     = $assets . '/img/';
 $svg     = __DIR__ . '/assets/img/svg/';
 
-// Archivos CSS fuente (modulares). Se combinan en build time con:
-//   php tools/build-css.php
-// El resultado es assets/css/styles.css, que se carga de forma asíncrona.
-// El CSS crítico (navbar + hero + variables) va inline en header.php.
-$cssSourceFiles = [
-    'base.css',
-    'navbar.css',
-    'hero.css',
-    'sections/01-shared.css',
-    'sections/02-estrella.css',
-    'sections/03-reels.css',
-    'sections/04-productos.css',
-    'sections/05-ubicacion.css',
-    'sections/06-nosotros.css',
-    'aside.css',
-    'clientes.css',
-    'footer.css',
-    'responsive.css',
-];
-
 // Orden de carga de los scripts. Se imprimen con defer al final del body
 // (includes/footer.php), por lo que respetan este orden sin bloquear el render.
 $jsFiles = [

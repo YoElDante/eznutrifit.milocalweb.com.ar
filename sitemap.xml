@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Sitemap de EZ Nutrifit. La extensión geo de sitemaps está deprecada por
+     Google: las coordenadas se declaran vía meta tags (geo.position / ICBM). -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:geo="http://www.google.com/geo/schemas/sitemap/1.0">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://eznutrifit.milocalweb.com.ar/</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <geo:geo>
-      <geo:format>georss</geo:format>
-    </geo:geo>
+    <image:image>
+      <image:loc>https://eznutrifit.milocalweb.com.ar/assets/img/cliente/logos/og-image-1200x630.webp</image:loc>
+      <image:title>EZ Nutrifit — Suplementos deportivos en Río Tercero</image:title>
+    </image:image>
     <image:image>
       <image:loc>https://eznutrifit.milocalweb.com.ar/assets/img/cliente/logos/logo-300x300-transp.webp</image:loc>
       <image:title>EZ Nutrifit — Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://eznutrifit.milocalweb.com.ar/assets/img/cliente/logos/logo-800x800.webp</image:loc>
+      <image:title>EZ Nutrifit — Logo 800x800</image:title>
     </image:image>
     <image:image>
       <image:loc>https://eznutrifit.milocalweb.com.ar/assets/img/cliente/identidad/hero-fondo-gris-575x800.webp</image:loc>
@@ -33,6 +39,26 @@
     <image:image>
       <image:loc>https://eznutrifit.milocalweb.com.ar/assets/img/cliente/impacto/estrella-mutantmass-creatina.webp</image:loc>
       <image:title>EZ Nutrifit — Combo Explosivo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://eznutrifit.milocalweb.com.ar/assets/img/cliente/impacto/complemento-thermofuelmax.webp</image:loc>
+      <image:title>EZ Nutrifit — Thermo Fuel Max</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://eznutrifit.milocalweb.com.ar/assets/img/cliente/impacto/complemento-betaalanine-creatine.webp</image:loc>
+      <image:title>EZ Nutrifit — Creatina + Beta Alanina</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://eznutrifit.milocalweb.com.ar/assets/img/cliente/impacto/complemento-betaalanine.webp</image:loc>
+      <image:title>EZ Nutrifit — Beta Alanina</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://eznutrifit.milocalweb.com.ar/assets/img/cliente/identidad/identidad-indumentaria-800x800.webp</image:loc>
+      <image:title>EZ Nutrifit — Indumentaria deportiva</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://eznutrifit.milocalweb.com.ar/assets/vid/reels/suplementos-pilares-escenciales.webp</image:loc>
+      <image:title>EZ Nutrifit — Pilares esenciales de suplementación</image:title>
     </image:image>
   </url>
 </urlset>

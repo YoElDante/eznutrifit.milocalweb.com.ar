@@ -25,7 +25,7 @@ $wa_full   = $wa_link . '?text=' . $wa_msg;
             <!-- Imagen principal -->
             <div class="estrella-imagen">
                 <img src="<?= $img ?>cliente/impacto/estrella-mutantmass-creatina.webp"
-                     alt="Combo Explosivo EZ Nutrifit — Mutantmass + Creatina"
+                     alt="EZ Nutrifit — Combo Explosivo Mutantmass + Creatina en Río Tercero, Córdoba"
                      class="estrella-img"
                      loading="lazy"
                      decoding="async"
@@ -84,7 +84,7 @@ $wa_full   = $wa_link . '?text=' . $wa_msg;
             <div class="secundaria-card" tabindex="0">
                 <div class="secundaria-img-wrap">
                      <img src="<?= $img ?>cliente/impacto/complemento-thermofuelmax.webp"
-                          alt="Thermo Fuel Max — Quemador de grasa"
+                          alt="EZ Nutrifit — Thermo Fuel Max, quemador de grasa, en Río Tercero, Córdoba"
                           class="secundaria-img"
                           loading="lazy"
                           decoding="async"
@@ -100,7 +100,7 @@ $wa_full   = $wa_link . '?text=' . $wa_msg;
             <div class="secundaria-card" tabindex="0">
                 <div class="secundaria-img-wrap">
                      <img src="<?= $img ?>cliente/impacto/complemento-betaalanine-creatine.webp"
-                          alt="Creatina + Beta Alanina — Sinergia"
+                          alt="EZ Nutrifit — Creatina + Beta Alanina en Río Tercero, Córdoba"
                           class="secundaria-img"
                           loading="lazy"
                           decoding="async"
@@ -116,7 +116,7 @@ $wa_full   = $wa_link . '?text=' . $wa_msg;
             <div class="secundaria-card" tabindex="0">
                 <div class="secundaria-img-wrap">
                      <img src="<?= $img ?>cliente/impacto/complemento-betaalanine.webp"
-                          alt="Beta Alanina — 300gr"
+                          alt="EZ Nutrifit — Beta Alanina 300gr en Río Tercero, Córdoba"
                           class="secundaria-img"
                           loading="lazy"
                           decoding="async"

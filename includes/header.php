@@ -22,7 +22,10 @@ $seo_provincia  = $cliente['seo_provincia'] ?? 'Córdoba';
 $seo_keywords   = $cliente['seo_keywords_primarias'] ?? 'Suplementos Deportivos';
 $seo_lat        = $cliente['seo_lat'] ?? '-32.1692529';
 $seo_long       = $cliente['seo_long'] ?? '-64.136046';
-$seo_domain     = $_SERVER['HTTP_HOST'] ?? 'eznutrifit.milocalweb.com.ar';
+$seo_domain     = $cliente['dominio'] ?? 'eznutrifit.milocalweb.com.ar';
+// El dominio canónico es fijo (no depende de HTTP_HOST) para que canonical,
+// OG y JSON-LD no puedan ser envenenados por host headers alternativos.
+$seo_domain     = preg_replace('#^https?://#i', '', rtrim((string) $seo_domain, '/'));
 $seo_base_url   = 'https://' . $seo_domain;
 $seo_og_image_path = $cliente['seo_og_image'] ?? '/assets/img/cliente/logos/og-image-1200x630.webp';
 
@@ -272,8 +275,8 @@ $ld_json['@graph'] = array_merge($ld_json['@graph'], $ld_products, $ld_offers);
 
     <!-- Favicon -->
     <?php $fav = $cliente['favicon'] ?? $img . 'iconos/favicon.ico'; ?>
-    <link rel="icon" type="image/x-icon" href="<?= $fav ?>">
-    <link rel="shortcut icon" type="image/x-icon" href="<?= $fav ?>">
+    <link rel="icon" type="image/x-icon" href="<?= htmlspecialchars($fav) ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= htmlspecialchars($fav) ?>">
 
     <!-- Preload imagen crítica del hero (LCP) -->
     <?php if (!empty($cliente['hero_img'])): ?>
