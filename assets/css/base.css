@@ -2,6 +2,9 @@
    EZ Nutrifit — Base: variables, icon sizes, reset
    ═══════════════════════════════════════════════════════════════════════ */
 
+/* ATENCIÓN: estas variables se duplican en critical.css (inline en <head>).
+   Si cambiás un valor acá, replicarlo allí para evitar FOUC en el primer render. */
+
 :root {
   --color-primary: #8DC63F;
   --color-primary-hover: #A8D95A;
@@ -93,4 +96,28 @@ iframe {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Foco visible global para navegación por teclado. */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Skip-link accesible: visible solo al recibir foco. */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.75rem 1rem;
+  background: var(--color-primary);
+  color: #000;
+  font-weight: 700;
+  border-radius: var(--radius);
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
 }

@@ -18,7 +18,15 @@ if (empty($ubicaciones)) {
     ]];
 }
 
-// Devuelve atributos width/height para un logo de ubicación.
+/**
+ * Devuelve los atributos width/height de un logo local.
+ *
+ * Evita saltos de layout (CLS) cuando la imagen no declara dimensiones.
+ * Solo mide archivos dentro del proyecto; si no puede, retorna cadena vacía.
+ *
+ * @param string $logoUrl Ruta pública del logo (ej. /assets/img/...).
+ * @return string Atributos HTML listos para insertar, o ''.
+ */
 function ubicacion_logo_dims($logoUrl) {
     $path = __DIR__ . '/../../' . ltrim($logoUrl, '/');
     if (is_file($path) && function_exists('getimagesize')) {
@@ -30,7 +38,15 @@ function ubicacion_logo_dims($logoUrl) {
     return '';
 }
 
-// Extrae lat/lng de la ubicación, con fallback al link de Google Maps.
+/**
+ * Obtiene las coordenadas de una ubicación.
+ *
+ * Prioriza los campos lat/lng de config.php y, como fallback, intenta
+ * extraerlas del parámetro `q` de un link de Google Maps.
+ *
+ * @param array $ubi Datos de una ubicación de config.php.
+ * @return array{0: ?string, 1: ?string} Par [lat, lng] o [null, null].
+ */
 function ubicacion_coords($ubi) {
     if (!empty($ubi['lat']) && !empty($ubi['lng'])) {
         return [$ubi['lat'], $ubi['lng']];
@@ -41,7 +57,19 @@ function ubicacion_coords($ubi) {
     return [null, null];
 }
 
-// Construye la URL de Google Static Maps para una ubicación.
+/**
+ * Construye la URL de Google Static Maps para una ubicación.
+ *
+ * Retorna cadena vacía si no hay API key configurada en secrets.php,
+ * para que la sección use el iframe embebido como fallback.
+ *
+ * @param string|float $lat Latitud.
+ * @param string|float $lng Longitud.
+ * @param int $ancho Ancho en px (máx. 640 en el plan gratuito).
+ * @param int $alto Alto en px.
+ * @param int $zoom Nivel de zoom (16 = escala de calle).
+ * @return string URL del mapa estático, o '' si falta la API key.
+ */
 function ubicacion_static_map_url($lat, $lng, $ancho = 640, $alto = 350, $zoom = 16) {
     $apiKey = defined('GOOGLE_MAPS_API_KEY') ? GOOGLE_MAPS_API_KEY : '';
     $placeholder = 'TU_GOOGLE_MAPS_API_KEY_AQUI';
@@ -103,6 +131,7 @@ function ubicacion_static_map_url($lat, $lng, $ancho = 640, $alto = 350, $zoom =
                 <!-- Mapa a la derecha -->
                 <div class="ubicacion-mapa">
                     <?php
+                        // Estrategia de mapa: Static Maps si hay API key; si no, iframe embed.
                         list($lat, $lng) = ubicacion_coords($ubi);
                         $staticMapUrl = ($lat && $lng) ? ubicacion_static_map_url($lat, $lng) : '';
                         $mapAlt = !empty($ubi['nombre'])
@@ -131,6 +160,7 @@ function ubicacion_static_map_url($lat, $lng, $ancho = 640, $alto = 350, $zoom =
                                     ? 'Mapa de ubicación de ' . htmlspecialchars($ubi['nombre'])
                                     : 'Mapa de ubicación';
                                 $embed = $ubi['gmaps_embed'];
+                                // Accesibilidad: Google a veces devuelve el iframe sin title.
                                 if (preg_match('/<iframe\b/i', $embed) && !preg_match('/<iframe\b[^>]*\btitle=/i', $embed)) {
                                     $embed = preg_replace('/<iframe/i', '<iframe title="' . $iframeTitle . '"', $embed, 1);
                                 }

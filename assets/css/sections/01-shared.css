@@ -1,0 +1,40 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   EZ Nutrifit — Parcial 01: estilos compartidos de secciones
+   Depende de base.css (variables). Los parciales 02-06 agregan lo propio.
+   El orden de compilación lo define index.php / tools/build-css.php.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ─── Shared section styles ──────────────────────────────────────── */
+
+.section {
+  padding: 5rem 1.5rem;
+}
+
+.section:nth-child(even) {
+  background: var(--color-bg-alt);
+}
+
+.section-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 400;
+  text-align: center;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  max-width: 560px;
+  margin: 0 auto 3rem;
+}
+

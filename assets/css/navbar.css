@@ -2,6 +2,9 @@
    EZ Nutrifit — Navbar sticky + hamburger
    ═══════════════════════════════════════════════════════════════════════ */
 
+/* Capas: header 100 < toggle 110; overlay 99 y panel mobile 105.
+   Mantener ese orden al agregar elementos fixed (ver responsive.css). */
+
 .site-header {
   position: fixed;
   top: 0;

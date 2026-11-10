@@ -1,0 +1,95 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   EZ Nutrifit — Parcial 04: Productos destacados
+   Requiere 01-shared.css. Selectores consumidos por includes/sections/productos.php.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ─── PRODUCTOS ──────────────────────────────────────────────────── */
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+}
+
+.producto-card {
+  background: var(--color-card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+
+.producto-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 24px rgba(141, 198, 63, 0.12);
+  border-color: rgba(141, 198, 63, 0.2);
+}
+
+.producto-img-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.producto-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.producto-card:hover .producto-img {
+  transform: scale(1.05);
+}
+
+.producto-body {
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.producto-nombre {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: var(--color-primary);
+}
+
+.producto-desc {
+  font-size: 0.93rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.btn-producto {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  background: var(--color-primary);
+  color: #000;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  border-radius: 4px;
+  transition: background 0.2s, transform 0.15s;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+}
+
+.btn-producto:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-1px);
+  color: #000;
+}
+

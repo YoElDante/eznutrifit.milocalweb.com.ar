@@ -2,6 +2,9 @@
    EZ Nutrifit — Aside Publicitario
    ═══════════════════════════════════════════════════════════════════════ */
 
+/* La visibilidad se controla desde config.php (aside_visible / aside).
+   Si el aside se desactiva, este CSS simplemente no se aplica. */
+
 .publicidad-aside {
   padding: 2rem 1.5rem;
   background: rgba(255, 255, 255, 0.02);

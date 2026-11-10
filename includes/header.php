@@ -26,7 +26,9 @@ $seo_domain     = $_SERVER['HTTP_HOST'] ?? 'eznutrifit.milocalweb.com.ar';
 $seo_base_url   = 'https://' . $seo_domain;
 $seo_og_image_path = $cliente['seo_og_image'] ?? '/assets/img/cliente/logos/og-image-1200x630.webp';
 
-$productos_nombres = array_map(function ($p) { return mb_strtolower($p['nombre']); }, $cliente['productos']);
+// Respetar la capitalización original de los nombres de producto: no usar
+// mb_strtolower en la meta description (degrada marcas y nombres propios).
+$productos_nombres = array_map(function ($p) { return $p['nombre']; }, $cliente['productos']);
 $seo_title       = htmlspecialchars($cliente['nombre']) . ' — ' . $seo_keywords . ' en ' . $seo_localidad;
 $seo_description = htmlspecialchars($cliente['nombre']) . ': ' . implode(', ', array_slice($productos_nombres, 0, 3)) . ' en ' . $seo_localidad . '. Suplementos deportivos. Pedí info por WhatsApp.';
 $seo_placename   = $seo_localidad . ', ' . htmlspecialchars($seo_provincia) . ', Argentina';
@@ -37,9 +39,15 @@ $og_image_alt    = htmlspecialchars($cliente['nombre']) . ' — ' . htmlspecialc
 $canonical_url   = $seo_base_url;
 
 // ─── JSON-LD Structured Data ────────────────────────────────
+// El @graph usa @id estables para enlazar Store, Product, Offer y Breadcrumb.
+// Los IDs (#product-N / #offer-N) se comparten entre entidades: no cambiarlos
+// sin volver a validar los Rich Results de Google.
+
 $ld_offers = [];
 $ld_products = [];
+$ld_store_offers = [];
 
+// Productos destacados de config.php: cada uno genera un Product + Offer.
 $offerIndex = 0;
 foreach ($cliente['productos'] as $p) {
     $productId  = $seo_base_url . '/#product-' . ($offerIndex + 1);
@@ -69,13 +77,17 @@ foreach ($cliente['productos'] as $p) {
     $ld_store_offers[] = ['@id' => $offerId];
 }
 
-// Categorías de productos que el negocio cubre (consulta por WhatsApp)
+// Categorías de productos que el negocio cubre (consulta por WhatsApp).
+// Solo se publican las que tienen imagen asociada para no dejar Products vacíos.
 $seo_categorias = $cliente['seo_categorias'] ?? [];
 $seo_categorias_imagenes = $cliente['seo_categorias_imagenes'] ?? [];
 foreach ($seo_categorias as $cat) {
-    if (empty($seo_categorias_imagenes[$cat])) {
-        continue;
-    }
+    // Incluir TODAS las categorías en el JSON-LD, incluso sin imagen
+    // propia: se usa la OG del negocio como fallback. No hacer `continue`
+    // porque se pierden keywords valiosas para Google y motores de IA.
+    $catImage = $seo_categorias_imagenes[$cat]
+        ?? $cliente['seo_og_image']
+        ?? '/assets/img/cliente/logos/og-image-1200x630.webp';
 
     $productId = $seo_base_url . '/#product-' . ($offerIndex + 1);
     $offerId   = $seo_base_url . '/#offer-' . ($offerIndex + 1);
@@ -87,7 +99,7 @@ foreach ($seo_categorias as $cat) {
         'name' => $cat,
         'description' => $cat . ' — Consultá por WhatsApp en ' . $cliente['nombre'] . '. ' . $seo_localidad . ', Córdoba.',
         'category' => 'Suplementos Deportivos',
-        'image' => $seo_base_url . $seo_categorias_imagenes[$cat],
+        'image' => $seo_base_url . $catImage,
         'offers' => ['@id' => $offerId],
     ];
 
@@ -109,9 +121,12 @@ $ld_sameas = array_values(array_filter([
     $cliente['redes']['facebook'] ?? '',
 ]));
 
+// Grafo principal: negocio (Store), navegación (BreadcrumbList) y autoría
+// del sitio (WebSite → MiLocalWeb). Products y marcas se agregan más abajo.
 $ld_json = [
     '@context' => 'https://schema.org',
     '@graph' => [
+        // Store: ficha principal del negocio (NAP, geo, ofertas y redes).
         [
             '@type' => 'Store',
             '@id' => $seo_base_url . '/#business',
@@ -148,10 +163,11 @@ $ld_json = [
             'makesOffer' => $ld_store_offers,
             'founder' => [
                 '@type' => 'Person',
-                'name' => 'Emiliano Zebalos',
-                'jobTitle' => 'Dueño',
+                'name' => htmlspecialchars($cliente['founder_name'] ?? ''),
+                'jobTitle' => htmlspecialchars($cliente['founder_title'] ?? ''),
             ],
         ],
+        // BreadcrumbList: migas de navegación para resultados locales.
         [
             '@type' => 'BreadcrumbList',
             '@id' => $seo_base_url . '/#breadcrumb',
@@ -170,13 +186,14 @@ $ld_json = [
                 ],
             ],
         ],
+        // WebSite: declara autoría de MiLocalWeb y datos de contacto.
         [
             '@type' => 'WebSite',
             '@id' => $seo_base_url . '/#website',
             'url' => $seo_base_url . '/',
             'name' => htmlspecialchars($cliente['nombre']) . ' — ' . $seo_keywords . ' en ' . $seo_localidad,
             'description' => $seo_description,
-            'inLanguage' => 'es',
+            'inLanguage' => 'es-AR',
             'author' => [
                 '@type' => 'Organization',
                 'name' => 'MiLocalWeb',
@@ -300,6 +317,7 @@ $ld_json['@graph'] = array_merge($ld_json['@graph'], $ld_products, $ld_offers);
     <?php endif; ?>
 </head>
 <body>
+    <a class="skip-link" href="#inicio">Saltar al contenido</a>
     <header class="site-header">
         <nav class="navbar" role="navigation" aria-label="Navegación principal">
             <?php $logo_src = $cliente['logo_img'] ?? $img . 'logo.png'; ?>
@@ -325,6 +343,7 @@ $ld_json['@graph'] = array_merge($ld_json['@graph'], $ld_products, $ld_offers);
                 <li><a href="#productos">Productos</a></li>
                 <li><a href="#ubicacion">Encontranos</a></li>
                 <li><a href="#reels">Conocenos en Acción</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
                 <li>                <a href="<?= $wa_full ?>" target="_blank" rel="noopener noreferrer" class="nav-cta">
                     Contactanos
                     <?php include $svg . 'whatsapp.svg'; ?>

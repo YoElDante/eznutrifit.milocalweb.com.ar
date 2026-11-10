@@ -5,9 +5,14 @@
  * Showcase dedicado al producto principal con imagen grande,
  * descripción detallada, beneficios y CTA a WhatsApp.
  *
+ * NOTA: el contenido está hardcodeado a propósito (no se lee de config.php).
+ * Si cambia el combo, editar este archivo y revisar
+ * assets/css/sections/02-estrella.css.
+ *
  * @package MiLocalWeb\Clientes
  */
 
+// Mensaje propio del combo: no usa el whatsapp_mensaje genérico de config.php.
 $wa_number = preg_replace('/[^0-9]/', '', $cliente['whatsapp']);
 $wa_link   = 'https://wa.me/' . $wa_number;
 $wa_msg    = urlencode('Hola! Quiero info sobre el Combo Explosivo de EZ Nutrifit');
@@ -73,6 +78,7 @@ $wa_full   = $wa_link . '?text=' . $wa_msg;
         </div>
 
         <!-- Imágenes secundarias con overlay descriptivo -->
+        <?php /* El overlay se revela por hover y por focus-within (accesible con teclado). */ ?>
         <h3 class="estrella-subtitulo">Sumalos a tu Combo</h3>
         <div class="estrella-secundarias">
             <div class="secundaria-card" tabindex="0">

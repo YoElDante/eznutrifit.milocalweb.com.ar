@@ -18,6 +18,8 @@ return [
     'whatsapp'  => '5493571597376',
     'email'     => '',
     'whatsapp_mensaje' => 'Hola! Vi tu web y quisiera más info',
+    'founder_name'  => 'Emiliano Zebalos',
+    'founder_title' => 'Dueño',
 
     // ─── Hero Section ────────────────────────────────────────────────
 
@@ -27,6 +29,8 @@ return [
     'hero_img'         => '/assets/img/cliente/identidad/hero-fondo-gris-575x800.webp',
 
     // ─── Identidad Visual: High-Contrast Neon ────────────────────────
+    // Cada clave de este array se inyecta como custom property CSS (--clave)
+    // en includes/header.php. Mantener los nombres usados por base.css y critical.css.
 
     'colors' => [
         'color-primary'       => '#8DC63F',
@@ -69,6 +73,8 @@ return [
     ],
 
     // ─── Ubicación (dos puntos de venta) ─────────────────────────────
+    // Los iframes de Google Maps deben conservar el zoom !1d1500 indicado
+    // en AGENTS.md para mantener el encuadre de la zona.
 
     'ubicaciones' => [
         [

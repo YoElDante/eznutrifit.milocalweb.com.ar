@@ -2,6 +2,9 @@
    EZ Nutrifit — Hero section (4 layouts)
    ═══════════════════════════════════════════════════════════════════════ */
 
+/* Capas del layout split: fondo (z1) → overlay (z2) → contenido (z3).
+   La máscara recorta la foto contra el fondo oscuro sin PNG transparente. */
+
 .hero {
   position: relative;
   overflow: hidden;
@@ -208,6 +211,7 @@
   color: #000;
 }
 
+/* Gradiente de marca de Instagram: hardcodeado a propósito. */
 .btn-hero--instagram {
   background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
   color: #fff;

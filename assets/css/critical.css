@@ -1,9 +1,7 @@
 /* ═══════════════════════════════════════════════════════════════════════
-   EZ Nutrifit — Critical CSS (above-the-fold)
-   Este archivo se inyecta inline en <head> para eliminar render-blocking.
-   El resto de los estilos se carga de forma asíncrona vía styles.css.
+   EZ Nutrifit — Critical CSS above-the-fold. Inline en <head>.
+   Duplica reglas de base/navbar/hero: replicar cambios en los fuentes.
    ═══════════════════════════════════════════════════════════════════════ */
-
 :root {
   --color-primary: #8DC63F;
   --color-primary-hover: #A8D95A;
@@ -23,9 +21,9 @@
   --radius-xl: 20px;
   --max-width: 1100px;
 }
-
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
+/* padding-top compensa la altura del header fixed (56px). */
 body {
   font-family: var(--font-body);
   color: var(--color-text);

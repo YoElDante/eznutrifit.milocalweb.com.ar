@@ -8,12 +8,14 @@
  * @package MiLocalWeb\Clientes
  */
 
+// Compatibilidad con configs antiguas: acepta 'aside' o 'aside_visible'.
 $aside_visibilidad = $cliente['aside'] ?? $cliente['aside_visible'] ?? true;
 if (!$aside_visibilidad) {
     return;
 }
 
-$mlw_wa_number = '543513783473';
+// Número fijo de MiLocalWeb (no es el WhatsApp del cliente).
+$mlw_wa_number = '5493513783473';
 $mlw_wa_msg    = urlencode('Hola! Vi la web de ' . ($cliente['nombre'] ?? 'EZ Nutrifit') . ' hecha por ustedes y me encantó. Quiero consultar para tener la mía.');
 $mlw_wa_full   = 'https://wa.me/' . $mlw_wa_number . '?text=' . $mlw_wa_msg;
 ?>

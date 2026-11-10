@@ -10,7 +10,6 @@
  * @package MiLocalWeb\Clientes
  */
 
-require_once __DIR__ . '/config.php';
 $cliente = require __DIR__ . '/config.php';
 require_once __DIR__ . '/includes/secrets.php';
 
@@ -33,13 +32,20 @@ $cssSourceFiles = [
     'base.css',
     'navbar.css',
     'hero.css',
-    'sections.css',
+    'sections/01-shared.css',
+    'sections/02-estrella.css',
+    'sections/03-reels.css',
+    'sections/04-productos.css',
+    'sections/05-ubicacion.css',
+    'sections/06-nosotros.css',
     'aside.css',
     'clientes.css',
     'footer.css',
     'responsive.css',
 ];
 
+// Orden de carga de los scripts. Se imprimen con defer al final del body
+// (includes/footer.php), por lo que respetan este orden sin bloquear el render.
 $jsFiles = [
     'back-to-top.js',
     'navbar.js',
@@ -57,6 +63,8 @@ foreach ($jsFiles as $file) {
     $jsVersions[$file] = is_file($path) ? '?v=' . filemtime($path) : '';
 }
 
+// Las secciones se renderizan en el orden visual de la landing.
+// header.php abre <main>; footer.php lo cierra y carga los scripts.
 require_once __DIR__ . '/includes/header.php';
 ?>
 
@@ -66,6 +74,7 @@ require_once __DIR__ . '/includes/header.php';
 <?php require_once __DIR__ . '/includes/sections/aside.php'; ?>
 <?php require_once __DIR__ . '/includes/sections/ubicacion.php'; ?>
 <?php require_once __DIR__ . '/includes/sections/reels.php'; ?>
+<?php require_once __DIR__ . '/includes/sections/nosotros.php'; ?>
 <?php require_once __DIR__ . '/includes/sections/clientes.php'; ?>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

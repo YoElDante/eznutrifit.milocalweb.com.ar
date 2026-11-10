@@ -22,6 +22,7 @@ if (empty($productos)) {
         <p class="section-subtitle">Proteínas, creatinas, colágenos, vitaminas, aminoácidos y más. Trabajamos con Star Nutrition, ENA, Gentech y las mejores marcas.</p>
 
         <div class="productos-grid">
+            <?php /* Cada tarjeta arma su propio mensaje de WhatsApp con el nombre del producto. */ ?>
             <?php foreach ($productos as $i => $p): ?>
             <?php
                 $prod_msg = urlencode('Hola! Vi ' . htmlspecialchars_decode($p['nombre'] ?? '') . ' en tu web y quisiera más información');

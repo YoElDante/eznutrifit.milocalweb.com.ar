@@ -8,11 +8,13 @@
  * @package MiLocalWeb\Clientes
  */
 
+// El mismo enlace de WhatsApp se reutiliza en el footer y en el botón flotante.
 $wa_number = preg_replace('/[^0-9]/', '', $cliente['whatsapp']);
 $wa_link   = 'https://wa.me/' . $wa_number;
 $wa_msg    = urlencode($cliente['whatsapp_mensaje'] ?? 'Hola! Vi tu web y quisiera más info');
 $wa_full   = $wa_link . '?text=' . $wa_msg;
 $logo_src  = $cliente['logo_img'] ?? $img . 'logo.png';
+// Los scripts se cargan al final con defer (ver $jsFiles en index.php).
 ?>
     </main>
 

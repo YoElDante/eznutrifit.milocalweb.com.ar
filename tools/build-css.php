@@ -24,7 +24,14 @@ $sourceFiles = [
     'base.css',
     'navbar.css',
     'hero.css',
-    'sections.css',
+    // La antigua sección monolítica se divide por bloque temático.
+    // El orden refleja el orden original de la cascada.
+    'sections/01-shared.css',
+    'sections/02-estrella.css',
+    'sections/03-reels.css',
+    'sections/04-productos.css',
+    'sections/05-ubicacion.css',
+    'sections/06-nosotros.css',
     'aside.css',
     'clientes.css',
     'footer.css',

@@ -5,6 +5,9 @@
  * Muestra 3 videos locales con lazy loading real:
  * preload="none" = 0 KB hasta que el usuario toca play.
  *
+ * NOTA: la lista está hardcodeada a propósito (no se lee de config.php).
+ * Si cambian los reels, editar el array $reels de este archivo.
+ *
  * @package MiLocalWeb\Clientes
  */
 

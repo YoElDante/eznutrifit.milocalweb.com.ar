@@ -2,6 +2,9 @@
    EZ Nutrifit — Responsive + Animations
    ═══════════════════════════════════════════════════════════════════════ */
 
+/* Sobrescribe los módulos anteriores: debe compilarse al final
+   (ver $cssSourceFiles en index.php). Breakpoints descendentes: 900 → 768 → 600 px. */
+
 /* ─── 900px breakpoint ───────────────────────────────────────────── */
 
 @media (max-width: 900px) {
@@ -314,6 +317,8 @@
   animation: fadeInUp 0.6s ease-out;
 }
 
+/* Entrada escalonada de las tarjetas de producto (0.1 s por tarjeta).
+   El template muestra hasta 3 productos, por eso solo se definen 3 delays. */
 .producto-card:nth-child(1) { animation: fadeInUp 0.5s ease-out 0.1s both; }
 .producto-card:nth-child(2) { animation: fadeInUp 0.5s ease-out 0.2s both; }
 .producto-card:nth-child(3) { animation: fadeInUp 0.5s ease-out 0.3s both; }

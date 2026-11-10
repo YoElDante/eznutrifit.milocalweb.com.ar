@@ -11,6 +11,8 @@
  * @package MiLocalWeb\Clientes
  */
 
+// El layout viene de config.php y solo cambia el orden visual de los bloques.
+// Las imágenes del hero no usan loading="lazy": son candidatas a LCP.
 $layout      = $cliente['hero_layout'] ?? 'img-right';
 $hero_class  = 'hero hero--' . $layout;
 $hero_img    = $cliente['hero_img'] ?? $img . 'hero.jpg';

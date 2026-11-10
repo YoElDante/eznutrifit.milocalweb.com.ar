@@ -12,9 +12,11 @@ $wa_number   = preg_replace('/[^0-9]/', '', $cliente['whatsapp']);
 $wa_link     = 'https://wa.me/' . $wa_number;
 $wa_msg      = urlencode($cliente['whatsapp_mensaje'] ?? 'Hola! Vi tu web y quisiera más info');
 $wa_full     = $wa_link . '?text=' . $wa_msg;
+// Los íconos de redes se muestran solo si la URL correspondiente no está vacía.
 $redes_vivas = array_filter($cliente['redes'] ?? [], function ($url) {
     return !empty($url);
 });
+// Fallback de galería cuando config.php no define nosotros_galeria.
 $galeria = $cliente['nosotros_galeria'] ?? [
     ['imagen' => $img . 'local-1.jpg', 'alt' => $cliente['nombre'] . ' — Nuestro local'],
     ['imagen' => $img . 'local-2.jpg', 'alt' => $cliente['nombre'] . ' — Nuestro equipo'],
@@ -24,8 +26,20 @@ $galeria = $cliente['nosotros_galeria'] ?? [
     <div class="section-container">
         <h2 class="section-title">Quiénes Somos</h2>
 
+        <?php if (!empty($cliente['founder_name'])): ?>
+        <p class="nosotros-texto nosotros-fundador">
+            Fundado por <strong><?= htmlspecialchars($cliente['founder_name']) ?></strong><?= !empty($cliente['founder_title']) ? ' — ' . htmlspecialchars($cliente['founder_title']) : '' ?>.
+        </p>
+        <?php endif; ?>
+
         <?php if (!empty($cliente['nosotros_texto'])): ?>
         <p class="nosotros-texto"><?= nl2br(htmlspecialchars($cliente['nosotros_texto'])) ?></p>
+        <?php endif; ?>
+
+        <?php if (!empty($cliente['seo_marcas'])): ?>
+        <p class="nosotros-texto nosotros-marcas">
+            Marcas que trabajamos: <?= implode(', ', array_map('htmlspecialchars', $cliente['seo_marcas'])) ?>.
+        </p>
         <?php endif; ?>
 
         <!-- Galería de fotos -->

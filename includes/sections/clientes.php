@@ -9,6 +9,7 @@
  * @package MiLocalWeb\Clientes
  */
 
+// Compatibilidad con configs antiguas: acepta 'clientes_mostrar' o 'mostrar_clientes'.
 $clientes_mostrar = $cliente['clientes_mostrar'] ?? $cliente['mostrar_clientes'] ?? true;
 if (!$clientes_mostrar) {
     return;

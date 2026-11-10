@@ -165,6 +165,7 @@
 
 /* ─── WhatsApp Float ─────────────────────────────────────────────── */
 
+/* z-index 200 y bottom 100px dejan libre el back-to-top (bottom 40px). */
 .whatsapp-float {
   position: fixed;
   bottom: 100px;
