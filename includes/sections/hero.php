@@ -26,11 +26,11 @@ $wa_full     = $wa_link . '?text=' . $wa_msg;
 
     <?php if ($layout === 'split'): ?>
         <!-- Layout SPLIT: imagen izquierda → gradiente → texto derecha -->
-        <div class="hero-split-bg" style="background-image: url('<?= $hero_img ?>')" aria-hidden="true"></div>
+        <div class="hero-split-bg" style="background-image: url('<?= htmlspecialchars($hero_img) ?>')" aria-hidden="true"></div>
         <div class="hero-split-overlay" aria-hidden="true"></div>
         <div class="hero-container">
             <div class="hero-content hero-content--right">
-                <img src="<?= $logo_src ?>"
+                <img src="<?= htmlspecialchars($logo_src) ?>"
                      alt="Logo <?= htmlspecialchars($cliente['nombre']) ?> — Suplementos deportivos en Río Tercero"
                      class="hero-logo"
                      decoding="async"
@@ -70,7 +70,7 @@ $wa_full     = $wa_link . '?text=' . $wa_msg;
                      width="575" height="800">
             </div>
             <div class="hero-content hero-content--centered">
-                <img src="<?= $logo_src ?>"
+                <img src="<?= htmlspecialchars($logo_src) ?>"
                      alt="Logo <?= htmlspecialchars($cliente['nombre']) ?> — Suplementos deportivos en Río Tercero"
                      class="hero-logo"
                      decoding="async"
@@ -95,7 +95,7 @@ $wa_full     = $wa_link . '?text=' . $wa_msg;
         <div class="hero-effects" aria-hidden="true"></div>
         <div class="hero-container">
             <div class="hero-content">
-                <img src="<?= $logo_src ?>"
+                <img src="<?= htmlspecialchars($logo_src) ?>"
                      alt="Logo <?= htmlspecialchars($cliente['nombre']) ?> — Suplementos deportivos en Río Tercero"
                      class="hero-logo"
                      decoding="async"
